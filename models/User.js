@@ -27,6 +27,11 @@ User.init(
             {
                 len: [4]
             }
+        },
+        is_admin: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
         }
     },
 
