@@ -26,14 +26,23 @@ GameList.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
-        }
+        },
+        game_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'game',
+                key: 'id'
+            }
+        },
+
 
     },
 
     {
         sequelize,
 
-        timestamps: false,
+        timestamps: true,
 
         freezeTableName: true,
 

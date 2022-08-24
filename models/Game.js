@@ -38,6 +38,14 @@ Game.init(
         age_rating: {
             type: DataTypes.STRING(4),
             allowNull: false
+        },
+        category_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'category',
+                key: 'id'
+            }
         }
     },
 
