@@ -18,6 +18,7 @@ const sess = {
   cookie: { expires: 600000 },
   resave: false,
   saveUnitialized: true,
+  proxy: true,
   store: new SequelizeStore({ db: sequelize }),
 };
 
