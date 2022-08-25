@@ -43,9 +43,9 @@ router.post("/", async (req, res) => {
       {
         email: req.body.email,
         password: req.body.password,
-        is_admin: false,
-      },
-      { fields: ["email", "password"] }
+        // is_admin: false,
+      }
+      // { fields: ["email", "password"] }
     );
     req.session.email = newUser.email;
     req.session.loggedIn = true;

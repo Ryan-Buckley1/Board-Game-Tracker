@@ -13,10 +13,12 @@
       <textarea name="game-description" id="game-description"></textarea>
     </div>
     <div>
+
       <label for="game-min-player">Minimum number of players:</label>
       <select name="game-min-player" id="game-min-player">
         {{#each min-player}}
           <option value="{{min-player}}">{{min-player}}</option>
+          {{! HARDCODE HARDCODE INSTEAD }}
         {{/each}}
       </select>
     </div>
@@ -25,6 +27,7 @@
       <select name="game-max-player" id="game-min-player">
         {{#each max-player}}
           <option value="{{max-player}}">{{max-player}}</option>
+          {{! HARDCODE INSTEAD  }}
         {{/each}}
       </select>
     </div>
@@ -33,6 +36,7 @@
       <select name="game-duration" id="game-duration">
         {{#each duration}}
           <option value="{{duration}}">{{duration}}</option>
+          {{! HARDCODE INSTEAD }}
         {{/each}}
       </select>
     </div>
@@ -41,9 +45,11 @@
       <select name="game-age-rating" id="game-age-rating">
         {{#each age-rating}}
           <option value="{{age-rating}}">{{age-rating}}</option>
+          {{! HARDCODE INSTEAD  }}
         {{/each}}
       </select>
     </div>
+    {{! category - model w/checkboxes }}
   </form>
   <button type="submit">Submit new game</button>
 </section>
