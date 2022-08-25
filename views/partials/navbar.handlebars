@@ -1,0 +1,8 @@
+<nav>
+  {{#if loggedIn}}
+    <a href="/dashboard">Dashboard</a>
+    <button id="logout">Logout</button>
+  {{else}}
+    <a href="/login">Login/Signup</a>
+  {{/if}}
+</nav>

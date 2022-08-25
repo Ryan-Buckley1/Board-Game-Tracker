@@ -1,8 +1,8 @@
-const User = require('./User');
-const Category = require('./Category');
-const Review = require('./Review');
-const Game = require('./Game');
-const GameList = require('./GameList');
+const User = require("./User");
+const Category = require("./Category");
+const Review = require("./Review");
+const Game = require("./Game");
+const GameList = require("./GameList");
 
 //create pseudo associations
 
@@ -15,7 +15,7 @@ const GameList = require('./GameList');
 User.hasMany(Review);
 Review.belongsTo(User);
 Game.hasMany(Review); //ADDED BY RB
-Review.belongsTo(Game); // ADDED BY RB
+Review.belongsTo(Game); // ADDED BY RB --  might be another through
 Category.hasMany(Game);
 //Game.belongsToMany(Category, { through:?});
 GameList.hasOne(User);
