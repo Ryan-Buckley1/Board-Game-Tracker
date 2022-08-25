@@ -14,6 +14,8 @@ const GameList = require('./GameList');
 
 User.hasMany(Review);
 Review.belongsTo(User);
+Game.hasMany(Review); //ADDED BY RB
+Review.belongsTo(Game); // ADDED BY RB
 Category.hasMany(Game);
 Game.belongsToMany(Category);
 GameList.hasOne(User);
