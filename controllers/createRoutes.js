@@ -9,3 +9,4 @@ router.get("/game", async (req, res) => {
     });
   } catch (error) {}
 });
+module.exports = router

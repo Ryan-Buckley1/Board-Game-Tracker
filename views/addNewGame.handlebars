@@ -15,38 +15,42 @@
     <div>
 
       <label for="game-min-player">Minimum number of players:</label>
-      <select name="game-min-player" id="game-min-player">
-        {{#each min-player}}
-          <option value="{{min-player}}">{{min-player}}</option>
-          {{! HARDCODE HARDCODE INSTEAD }}
-        {{/each}}
-      </select>
+      <input
+        type="number"
+        name="game-min-player"
+        id="game-min-player"
+        min="1"
+        max="9"
+      />
     </div>
     <div>
       <label for="game-max-player">Maximum number of players:</label>
-      <select name="game-max-player" id="game-min-player">
-        {{#each max-player}}
-          <option value="{{max-player}}">{{max-player}}</option>
-          {{! HARDCODE INSTEAD  }}
-        {{/each}}
-      </select>
+      <input type="number" name="game-max-player" id="game-max-player" min="1" />
     </div>
     <div>
       <label for="game-duration">How long the game takes to play:</label>
       <select name="game-duration" id="game-duration">
-        {{#each duration}}
-          <option value="{{duration}}">{{duration}}</option>
-          {{! HARDCODE INSTEAD }}
-        {{/each}}
+          <option value="0-1hrs">0-1 hrs</option>
+          <option value="1-2 hrs">1-2 hrs</option>
+          <option value="2-3 hrs">2-3 hrs</option>
+          <option value="3+ hrs"> 3+ hrs</option>
       </select>
     </div>
     <div>
       <label for="game-age-rating">What age range is appropriate for this game:</label>
       <select name="game-age-rating" id="game-age-rating">
-        {{#each age-rating}}
-          <option value="{{age-rating}}">{{age-rating}}</option>
-          {{! HARDCODE INSTEAD  }}
-        {{/each}}
+          <option value="1+">1+ years old</option>
+          <option value="2+">2+ years old</option>
+          <option value="3+">3+ years old</option>
+          <option value="4+">4+ years old</option>
+          <option value="5+">5+ years old</option>
+          <option value="7+">7+ years old</option>
+          <option value="9+">9+ years old</option>
+          <option value="11+">11+ years old</option>
+          <option value="13+">13+ years old</option>
+          <option value="15+">15+ years old</option>
+          <option value="18+">18+ years old</option>
+          <option value="21+">21+ years old</option>
       </select>
     </div>
     {{! category - model w/checkboxes }}
