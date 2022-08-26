@@ -3,22 +3,22 @@ const Category = require("./Category");
 const Review = require("./Review");
 const Game = require("./Game");
 const GameList = require("./GameList");
-
-//create pseudo associations
-
-//  Each User has one GameList
-
-//  Each GameList has one User
-
-//  Each GameList has many Games
+const game_category_bridge = require('./game_category_bridge');
 
 User.hasMany(Review);
-Review.belongsTo(User);
-Game.hasMany(Review); //ADDED BY RB
-Review.belongsTo(Game); // ADDED BY RB --  might be another through
-Category.hasMany(Game);
-//Game.belongsToMany(Category, { through:?});
-GameList.hasOne(User);
-User.belongsTo(GameList);
+User.hasMany(Game);
+User.hasOne(GameList);
 
-module.exports = { User, Category, Review, Game, GameList };
+Review.belongsTo(User);
+Review.belongsTo(Game);
+
+Game.hasMany(Review);
+Game.belongsToMany(Category, { through: game_category_bridge });
+Game.belongsTo(User);
+
+Category.belongsToMany(Game, { through: game_category_bridge });
+
+GameList.belongsTo(User);
+GameList.hasMany(Game);
+
+module.exports = { User, Category, Review, Game, GameList, game_category_bridge };

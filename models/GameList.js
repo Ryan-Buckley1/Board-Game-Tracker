@@ -34,8 +34,6 @@ GameList.init(
                 key: 'id'
             }
         },
-
-
     },
 
     {
