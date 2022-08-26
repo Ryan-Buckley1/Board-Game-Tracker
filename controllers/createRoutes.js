@@ -5,8 +5,15 @@ const router = require("express").Router();
 router.get("/game", async (req, res) => {
   try {
     const allCategories = await Category.findAll({
-        attributes: ['category_name']
+      attributes: ["category_name"],
     });
-  } catch (error) {}
+    const categories = allCategories.map((category) =>
+      category.get({ plain: true })
+    );
+    res.render("addNewGame", { categories, loggedIn: req.session.loggedIn });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
 });
-module.exports = router
+module.exports = router;
