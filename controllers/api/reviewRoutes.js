@@ -1,5 +1,4 @@
 const { Review, User, Game } = require("../../models");
-const { increment } = require("../../models/User");
 
 const router = require("express").Router();
 
