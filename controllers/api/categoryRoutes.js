@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Game, Category } = require("../../models");
+const { Game, Category, game_category_bridge } = require("../../models");
 
 router.get('/', async (req, res) => {
     try {
@@ -40,6 +40,7 @@ router.get('/:id', async (req, res) => {
         if (!singleCategory) {
             res.status(404).json({ message: 'No category found with this ID' });
         }
+        res.json(singleCategory);
     } catch (error) {
         console.log(error);
         res.status(500).json(error);
