@@ -4,7 +4,7 @@ const createRoutes = require('./createRoutes');
 
 
 router.use("/api", apiRoutes);
-// router.use('/create', createRoutes)
+router.use('/create', createRoutes);
 
 router.use((req, res) => {
   res.status(404).end();
