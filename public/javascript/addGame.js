@@ -15,7 +15,7 @@
               event.stopPropagation();
             }
             form.classList.add("was-validated");
-            newGameHandler();
+            newGameHandler(event);
           },
           false
         );
@@ -29,25 +29,24 @@
 
 async function newGameHandler(event) {
   event.preventDefault();
-  const name = document.querySelector('input[name="game-name]').value.trim();
-  const description = document
-    .querySelector('input[name="game-description]')
-    .value.trim();
-  const min_players = document
-    .querySelector('input[name="game-min-player]')
-    .value.trim();
-  const max_players = document
-    .querySelector('input[name="game-max-player]')
-    .value.trim();
-  const duration = document
-    .querySelector('input[name="game-duration]')
-    .value.trim();
-  const age_rating = document
-    .querySelector('input[name="game-age-rating]')
-    .value.trim();
+  const name = document.querySelector('input[name="game-name"]').value;
+  const description = document.querySelector(
+    'textarea[name="game-description"]'
+  ).value;
+  const min_players = document.querySelector(
+    'input[name="game-min-player"]'
+  ).value;
+  const max_players = document.querySelector(
+    'input[name="game-max-player"]'
+  ).value;
+  const duration = document.querySelector('select[name="game-duration"]').value;
+  const age_rating = document.querySelector(
+    'select[name="game-age-rating"]'
+  ).value;
   const allSelectedCategories = document.querySelectorAll(
     "input[type=checkbox]:checked"
   );
+  let category_id = [];
   for (let i = 0; i < allSelectedCategories.length; i++) {
     let catVal = allSelectedCategories[i].value;
     category_id.push(catVal);
@@ -69,7 +68,7 @@ async function newGameHandler(event) {
     },
   });
   if (response.ok) {
-    document.location.replace("/dashboard");
+    document.location.replace("/");
   } else {
     alert(response.statusText);
   }
