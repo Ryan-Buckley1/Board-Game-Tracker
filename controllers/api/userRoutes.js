@@ -50,7 +50,8 @@ router.post("/", async (req, res) => {
       }
       // { fields: ["email", "password"] }
     );
-    req.session.email = newUser.email;
+    req.session.userId = newUser.id;
+    req.session.username = newUser.username;
     req.session.loggedIn = true;
     req.session.save(() => {
       res.json(newUser);
