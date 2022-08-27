@@ -1,0 +1,27 @@
+<article class="game">
+  <div class="name">
+    <h2>{{name}}</h2>
+  </div>
+  <div class="description">
+    <p>{{description}}</p>
+  </div>
+  <ul>
+    <li class="min-players">
+      {{min_players}}
+    </li>
+    <li class="max-players">
+      {{max_players}}
+    </li>
+    <li class="duration">
+      {{duration}}
+    </li>
+    <li class="age-rating">
+      {{age_rating}}
+    </li>
+    {{#each categories}}
+      <li class="category">
+        {{categories.category_name}}
+      </li>
+    {{/each}}
+  </ul>
+</article>
