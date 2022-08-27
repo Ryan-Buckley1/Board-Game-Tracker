@@ -1,72 +1,72 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-class Game extends Model { }
+class Game extends Model {}
 
 Game.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true,
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        min_players: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                min: 1
-            }
-        },
-        max_players: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        duration: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        age_rating: {
-            type: DataTypes.STRING(4),
-            allowNull: false
-        },
-        category_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'category',
-                key: 'id'
-            }
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        }
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    min_players: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+      },
+    },
+    max_players: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    duration: {
+      type: DataTypes.STRING(4),
+      allowNull: false,
+    },
+    age_rating: {
+      type: DataTypes.STRING(4),
+      allowNull: false,
+    },
+    // category_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: "category",
+    //     key: "id",
+    //   },
+    // },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
+  },
 
-    {
-        sequelize,
+  {
+    sequelize,
 
-        timestamps: true,
+    timestamps: true,
 
-        freezeTableName: true,
+    freezeTableName: true,
 
-        underscored: true,
+    underscored: true,
 
-        modelName: 'game'
-    }
+    modelName: "game",
+  }
 );
 
 module.exports = Game;

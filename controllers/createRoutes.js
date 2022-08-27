@@ -5,7 +5,7 @@ const router = require("express").Router();
 router.get("/game", async (req, res) => {
   try {
     const allCategories = await Category.findAll({
-      attributes: ["category_name"],
+      attributes: ["id", "category_name"],
     });
     const categories = allCategories.map((category) =>
       category.get({ plain: true })

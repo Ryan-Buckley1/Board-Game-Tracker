@@ -35,10 +35,10 @@
     <div>
       <label for="game-duration">How long the game takes to play:</label>
       <select name="game-duration" id="game-duration">
-        <option value="0-1hrs">0-1 hrs</option>
-        <option value="1-2 hrs">1-2 hrs</option>
-        <option value="2-3 hrs">2-3 hrs</option>
-        <option value="3+ hrs"> 3+ hrs</option>
+        <option value="0-1">0-1 hrs</option>
+        <option value="1-2">1-2 hrs</option>
+        <option value="2-3">2-3 hrs</option>
+        <option value="3+"> 3+ hrs</option>
       </select>
     </div>
     <div>
@@ -89,18 +89,18 @@
             </button>
           </div>
           <div class="modal-body">
-            {{#each categories as |category|}}
+            {{#each categories}}
               <div class="custom-control custom-checkbox">
                 <input
                   type="checkbox"
                   class="custom-control-input"
-                  id="customCheck{{category.id}}"
-                  value="{{category.id}}"
+                  id="customCheck{{id}}"
+                  value="{{id}}"
                 />
                 <label
                   class="custom-control-label"
-                  for="customCheck{{category.id}}"
-                >{{category.category_name}}</label>
+                  for="customCheck{{id}}"
+                >{{category_name}}</label>
               </div>
             {{/each}}
           </div>
@@ -110,7 +110,11 @@
               class="btn btn-secondary"
               data-dismiss="modal"
             >Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+            >Save changes</button>
           </div>
         </div>
       </div>
@@ -119,3 +123,4 @@
   </form>
   <button type="submit" id="submit-new-game">Submit new game</button>
 </section>
+<script src="/javascript/addGame.js"></script>

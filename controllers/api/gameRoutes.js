@@ -9,7 +9,7 @@ const {
 router.get("/", async (req, res) => {
   try {
     const allGames = await Game.findAll({
-      attributes: ["id", "name", "description", "category_id"],
+      attributes: ["id", "name", "description"],
       include: [
         {
           model: Category,
@@ -91,8 +91,14 @@ router.post("/", async (req, res) => {
       max_players: req.body.max_players,
       duration: req.body.duration,
       age_rating: req.body.age_rating,
-      category_id: req.body.category_id,
+      // category_id: req.body.category_id,
     });
+    const categories = req.body.category_id.map((category) => {
+      console.log(category);
+      return { game_id: newGame.id, category_id: category };
+    });
+    console.log(categories);
+    const bridge = await game_category_bridge.bulkCreate(categories);
     res.json(newGame);
   } catch (error) {
     console.error(error);
