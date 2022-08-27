@@ -3,38 +3,61 @@
 <section>
   <h2>Create New Game</h2>
 
-  <form class="new-game-form">
+  <form class="new-game-form needs-validation">
     <div>
-      <label for="game-name">Name:</label>
-      <input type="text" name="game-name" id="game-name" />
+      <label for="validationCustom01">Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="game-name"
+        id="validationCustom01"
+        required
+      />
+      <div class="invalid-feedback">Please Provide a game name</div>
     </div>
     <div>
-      <label for="game-description">Description:</label>
-      <textarea name="game-description" id="game-description"></textarea>
+      <label for="validationCustom02">Description:</label>
+      <textarea
+        name="game-description"
+        id="validationCustom02"
+        class="form-control"
+        required
+      ></textarea>
     </div>
     <div>
 
-      <label for="game-min-player">Minimum number of players:</label>
+      <label for="validationCustom03">Minimum number of players:</label>
       <input
         type="number"
         name="game-min-player"
-        id="game-min-player"
+        id="validationCustom03"
+        class="form-control"
         min="1"
         max="9"
+        required
       />
+      <div class="invalid-feedback">Please enter a number 1 - 9</div>
     </div>
     <div>
-      <label for="game-max-player">Maximum number of players:</label>
+      <label for="validationCustom04">Maximum number of players:</label>
       <input
         type="number"
         name="game-max-player"
-        id="game-max-player"
+        id="validationCustom04"
+        class="form-control"
         min="1"
+        required
       />
+      <div class="invalid-feedback">Please enter a number greater than 1</div>
     </div>
     <div>
       <label for="game-duration">How long the game takes to play:</label>
-      <select name="game-duration" id="game-duration">
+      <select
+        name="game-duration"
+        id="game-duration"
+        class="custom-select"
+        required
+      >
         <option value="0-1">0-1 hrs</option>
         <option value="1-2">1-2 hrs</option>
         <option value="2-3">2-3 hrs</option>
@@ -43,7 +66,12 @@
     </div>
     <div>
       <label for="game-age-rating">What age range is appropriate for this game:</label>
-      <select name="game-age-rating" id="game-age-rating">
+      <select
+        name="game-age-rating"
+        id="game-age-rating"
+        class="custom-select"
+        required
+      >
         <option value="1+">1+ years old</option>
         <option value="2+">2+ years old</option>
         <option value="3+">3+ years old</option>
@@ -120,7 +148,7 @@
       </div>
     </div>
     {{! category - model w/checkboxes }}
+    <button type="submit" id="submit-new-game" class="btn">Submit new game</button>
   </form>
-  <button type="submit" id="submit-new-game">Submit new game</button>
 </section>
 <script src="/javascript/addGame.js"></script>
