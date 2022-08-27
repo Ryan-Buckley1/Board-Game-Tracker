@@ -4,11 +4,13 @@ const gameRoutes = require("./gameRoutes");
 const reviewRoutes = require("./reviewRoutes");
 const gameListRoutes = require("./gameListRoutes");
 const categoryRoutes = require("./categoryRoutes");
+const gameCategoryBridgeRoutes = require("./gameCategoryBridgeRoutes");
 
 router.use("/users", userRoutes);
 router.use("/game", gameRoutes);
 router.use("/review", reviewRoutes);
 router.use("/gamelist", gameListRoutes);
 router.use("/category", categoryRoutes);
+router.use("/gcb", gameCategoryBridgeRoutes);
 
 module.exports = router;

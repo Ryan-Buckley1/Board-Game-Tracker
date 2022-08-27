@@ -1,5 +1,10 @@
 const router = require("express").Router();
-const { Game, Category, Review, game_category_bridge } = require("../../models");
+const {
+  Game,
+  Category,
+  Review,
+  game_category_bridge,
+} = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -50,8 +55,27 @@ router.get("/:id", async (req, res) => {
     });
     if (!singleGame) {
       res.status(404).json({ message: "No game found with this ID" });
+      return;
     }
     res.json(singleGame);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
+router.get("/name/:name", async (req, res) => {
+  try {
+    const namedGame = await Game.findOne({
+      where: {
+        name: req.params.name,
+      },
+      attributes: ["id"],
+    });
+    if (!namedGame) {
+      res.status(404).json({ message: "No game found with this name" });
+    }
+    res.json(namedGame);
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
