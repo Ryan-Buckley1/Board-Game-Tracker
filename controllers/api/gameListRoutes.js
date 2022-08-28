@@ -29,7 +29,14 @@ router.get("/:user_id", async (req, res) => {
       where: {
         user_id: req.params.user_id,
       },
-      attributes: ["id", "ownership", "favorite", "game_id", "user_id"],
+      attributes: [
+        "id",
+        "ownership",
+        "favorite",
+        "wishlist",
+        "game_id",
+        "user_id",
+      ],
       include: [
         {
           model: Game,
@@ -104,7 +111,7 @@ router.put("wishlist/:game_id", async (req, res) => {
         },
       },
       {
-        wishlist: req.body.favorite,
+        wishlist: req.body.wishlist,
       }
     );
     if (!updatedList) {
@@ -130,7 +137,7 @@ router.put("ownership/:game_id", async (req, res) => {
         },
       },
       {
-        ownership: req.body.favorite,
+        ownership: req.body.ownership,
       }
     );
     if (!updatedList) {

@@ -38,7 +38,7 @@ router.get("/favorite", async (req, res) => {
 
 router.get("/wishlist", async (req, res) => {
   try {
-    // console.log(req.session.userId);
+    console.log(req.session.userId);
 
     const wishGames = await GameList.findAll({
       where: {
@@ -53,9 +53,9 @@ router.get("/wishlist", async (req, res) => {
         },
       ],
     });
-    // console.log(wishGames);
+    console.log(wishGames);
     const wishGame = wishGames.map((game) => game.get({ plain: true }));
-    // console.log(wishGame);
+    console.log(wishGame);
     res.render("wishlist", {
       wishGame,
       loggedIn: req.session.loggedIn,
@@ -83,7 +83,7 @@ router.get("/ownership", async (req, res) => {
       ],
     });
     const ownedGame = ownedGames.map((game) => game.get({ plain: true }));
-    res.render("ownership", {
+    res.render("dashboard", {
       ownedGame,
       loggedIn: req.session.loggedIn,
       username: req.session.username,

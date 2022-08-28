@@ -7,7 +7,7 @@ const game_category_bridge = require('./game_category_bridge');
 
 User.hasMany(Review);
 User.hasMany(Game);
-User.hasOne(GameList);
+User.hasOne(GameList, {onDelete: 'cascade'});
 
 Review.belongsTo(User);
 Review.belongsTo(Game);

@@ -1,7 +1,8 @@
 const sequelize = require("../config/connection");
-const seedCategory = require('./seedCategory');
-const seedGame = require('./seedGame');
+const seedCategory = require("./seedCategory");
+const seedGame = require("./seedGame");
 const seedGameCategoryBridge = require("./seedGameCategoryBridge");
+const seedGameList = require("./seedGameList");
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
@@ -11,6 +12,8 @@ const seedAll = async () => {
   await seedGame();
 
   await seedGameCategoryBridge();
+
+  await seedGameList();
 
   process.exit(0);
 };
