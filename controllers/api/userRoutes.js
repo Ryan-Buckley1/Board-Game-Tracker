@@ -62,35 +62,60 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
-  try {
-    const loggedInUser = User.findOne({
-      where: {
-        email: req.body.email,
-      },
-    });
-    if (!loggedInUser) {
-      res
-        .status(400)
-        .json({ message: "No user found with that email address" });
+router.post("/login", (req, res) => {
+  User.findOne({
+    where: {
+      email: req.body.email,
+    },
+  }).then((dbUserData) => {
+    if (!dbUserData) {
+      res.status(400).json({ message: "Mo user with that email address!" });
       return;
     }
-    const validPassword = loggedInUser.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
     if (!validPassword) {
-      res.status(400).json({ message: "Incorrect Password" });
+      res.status(400).json({ message: "Incorrect Password!" });
       return;
     }
-    req.session.user_id = loggedInUser.id;
-    req.session.email = loggedInUser.email;
+    req.session.userId = dbUserData.id;
+    req.session.username = dbUserData.username;
     req.session.loggedIn = true;
     req.session.save(() => {
-      res.json({ user: loggedInUser, message: "You are now logged in!" });
+      res.json({ user: dbUserData, message: "You are now logged in!" });
+      // res.json({ user: dbUserData });
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json(error);
-  }
+  });
 });
+// TODO: FIGURE OUT WHY THIS WONT WORK WITH ASYNC AWAIT
+// router.post("/login", async (req, res) => {
+//   try {
+//     const loggedInUser = User.findOne({
+//       where: {
+//         email: req.body.email,
+//       },
+//     });
+//     if (!loggedInUser) {
+//       res
+//         .status(400)
+//         .json({ message: "No user found with that email address" });
+//       return;
+//     }
+//     const validPassword = await loggedInUser.checkPassword(req.body.password);
+//     if (!validPassword) {
+//       res.status(400).json({ message: "Incorrect Password" });
+//       return;
+//     }
+//     req.session.user_id = loggedInUser.id;
+//     req.session.email = loggedInUser.email;
+//     req.session.loggedIn = true;
+//     req.session.save(() => {
+//       res.json({ user: loggedInUser, message: "You are now logged in!" });
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json(error);
+//   }
+// });
 
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
