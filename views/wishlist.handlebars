@@ -1,7 +1,6 @@
-<h1>{{id}}'s Wishlist!</h1>
+<h1>{{username}}'s Wishlist!</h1>
 
-<p>{{user_id}}</p>
-{{#each wishGame}}
-<p>{{id}}</p>
-{{> multiple-games-info }}
+{{#each wishGame as |Game|}}
+{{!-- <p>{{wishlist}}</p> --}}
+{{> multiple-game-info Game.games }}
 {{/each}}
