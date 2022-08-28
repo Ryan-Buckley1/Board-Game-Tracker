@@ -1,10 +1,11 @@
+const session = require("express-session");
 const { Game, User, Category } = require("../models");
 
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
   try {
-    res.render("homepage");
+    res.render("homepage", { loggedIn: req.session.loggedIn });
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
@@ -16,7 +17,7 @@ router.get("/login", (req, res) => {
     res.redirect("/");
     return;
   }
-  res.render("login");
+  res.render("login", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/signup", (req, res) => {
@@ -24,7 +25,7 @@ router.get("/signup", (req, res) => {
     res.redirect("/");
     return;
   }
-  res.render("signup");
+  res.render("signup", { loggedIn: req.session.loggedIn });
 });
 
 module.exports = router;

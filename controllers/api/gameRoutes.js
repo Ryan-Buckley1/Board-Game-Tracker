@@ -91,6 +91,7 @@ router.post("/", async (req, res) => {
       max_players: req.body.max_players,
       duration: req.body.duration,
       age_rating: req.body.age_rating,
+      user_id: req.session.userId,
       // category_id: req.body.category_id,
     });
     const categories = req.body.category_id.map((category) => {

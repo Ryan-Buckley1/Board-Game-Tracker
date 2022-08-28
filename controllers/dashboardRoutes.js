@@ -3,7 +3,7 @@ const { GameList, Game } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
-    res.render("dashboard");
+    res.render("dashboard", { loggedIn: req.session.loggedIn });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -63,14 +63,14 @@ router.get("/wishlist", async (req, res) => {
   }
 });
 
-router.get("/owned", async (req, res) => {
+router.get("/ownership", async (req, res) => {
   try {
     const ownedGames = GameList.findAll({
       where: {
         user_id: req.session.userId,
         owned: true,
       },
-      attributes: ["id", "user_id", "game_id", "owned"],
+      attributes: ["id", "user_id", "game_id", "ownership"],
       include: [
         {
           model: Game,
@@ -79,7 +79,7 @@ router.get("/owned", async (req, res) => {
       ],
     });
     const ownedGame = ownedGames.map((game) => game.get({ plain: true }));
-    res.render("owned", {
+    res.render("ownership", {
       ownedGame,
       loggedIn: req.session.loggedIn,
       username: req.session.username,

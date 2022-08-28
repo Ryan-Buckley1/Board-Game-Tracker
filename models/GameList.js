@@ -1,60 +1,60 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-class GameList extends Model { }
+class GameList extends Model {}
 
 GameList.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true,
-        },
-        ownership: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        },
-        favorite: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        },
-        wish_list: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        },
-        game_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'game',
-                key: 'id'
-            }
-        },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        }
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
     },
+    ownership: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    favorite: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    wishlist: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    game_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "game",
+        key: "id",
+      },
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
+  },
 
-    {
-        sequelize,
+  {
+    sequelize,
 
-        timestamps: true,
+    timestamps: true,
 
-        freezeTableName: true,
+    freezeTableName: true,
 
-        underscored: true,
+    underscored: true,
 
-        modelName: 'game-list'
-    }
+    modelName: "game-list",
+  }
 );
 
 module.exports = GameList;
