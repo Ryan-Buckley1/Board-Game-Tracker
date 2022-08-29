@@ -34,6 +34,37 @@ router.get("/signup", (req, res) => {
 //   })
 // })
 
+router.get("/game/:id", async (req, res) => {
+  try {
+    const oneGame = await Game.findOne({
+      where: {
+        id: req.params.id,
+      },
+      attributes: [
+        "id",
+        "name",
+        "description",
+        "min_players",
+        "max_players",
+        "duration",
+        "age_rating",
+      ],
+      include: [
+        {
+          model: Category,
+          attributes: ["id", "category_name"],
+        },
+      ],
+    });
+    const game = oneGame.get({ plain: true });
+    console.log(game);
+    res.render("single-game-view", { game });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
 router.get("/category", async (req, res) => {
   try {
     const allCategories = await Category.findAll({

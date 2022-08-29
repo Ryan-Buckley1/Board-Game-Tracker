@@ -7,20 +7,27 @@
   </div>
   <ul>
     <li class="min-players">
+      Min Players:
       {{min_players}}
     </li>
     <li class="max-players">
+      Max Players:
       {{max_players}}
     </li>
     <li class="duration">
+      Can play game in
       {{duration}}
+      hours
     </li>
     <li class="age-rating">
+      Age Rating:
       {{age_rating}}
+      yrs old
     </li>
     {{#each categories}}
       <li class="category">
-        {{categories.category_name}}
+        Game Category:
+        {{category_name}}
       </li>
     {{/each}}
   </ul>
