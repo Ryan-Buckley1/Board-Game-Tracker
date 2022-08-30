@@ -1,9 +1,24 @@
-<nav>
-  {{#if loggedIn}}
-    <a href="/dashboard">Dashboard</a>
-    <button id="logout">Logout</button>
+<ul class="nav d-flex justify-content-between fs-3">
+    {{#if loggedIn}}
+  <li class="nav-item">
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+    {{else}}
+  </li>
+  <li class="nav-item">
+       <a href="/signup" class="nav-link text-primary">Sign Up</a>
+  </li>
+    {{/if}}
+  <li class="nav-item">
+    <a class="nav-link text-black fs-1" aria-current="homepage "href="/"><strong>Board Game Tracker</strong></a>
+  </li>
+    {{#if loggedIn}}
+  <li class="nav-item">
+    <a href ="#" id="logout" class="nav-link cursor-pointer"><i class="fa text-danger fa-sign-out fs-1" aria-hidden="true"></i>
+</a>
+  </li>
   {{else}}
-    <a href="/login">Login</a>
-    <a href="/signup">Sign Up</a>
-  {{/if}}
-</nav>
+  <li class="nav-item">
+       <a href="/login" class="nav-link"> <i class="fa text-success fa-sign-in fs-1" aria-hidden="true"></i></a>
+  </li>
+    {{/if}}
+</ul>
