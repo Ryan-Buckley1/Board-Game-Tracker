@@ -33,24 +33,24 @@ router.get("/favorite", userAuth, async (req, res) => {
       ],
       include: [
         {
-          model: Game,
-          attributes: ["name", "description"],
-          include: [
-            {
-              model: GameList,
-              attributes: ["favorite"],
-            },
-          ],
+          model: GameList,
+          attributes: ["favorite"],
+          include: {
+            model: Game,
+            attributes: ["name", "description"],
+          },
         },
       ],
     });
-    // console.log(favGames);
+    console.log(favGames);
     // const favGame = favGames.get({ plain: true });
     // console.log(favGame);
-    // const isFavorite = favGames.map((gmae) => gmae.get({ plain: true }));
+    // const isFavorite = favGames.get({ plain: true });
     // let theGames = isFavorite.games;
     // console.log(isFavorite);
-    // const games = theGames.map((gamer) => gamer.get({ plain: true }));
+    // const games = isFavorite.gamelists.map((gamer) =>
+    // gamer.get({ plain: true })
+    // );
     // console.log(games);
     res.render("favorite", {
       favGames,
@@ -76,14 +76,17 @@ router.get("/wishlist", userAuth, async (req, res) => {
       include: [
         {
           model: Game,
-          foreignKey: "gamelist_id",
+          // foreignKey: "gamelist_id",
           attributes: ["id", "name", "description"],
         },
       ],
     });
-    console.log(wishGames);
+    // console.log(wishGames);
     const wishGame = wishGames.map((game) => game.get({ plain: true }));
     console.log(wishGame);
+    // let { game } = wishGames;
+    // const wishGameList = JSON.stringify(game);
+    // console.log(wishGameList);
     res.render("wishlist", {
       wishGame,
       loggedIn: req.session.loggedIn,
