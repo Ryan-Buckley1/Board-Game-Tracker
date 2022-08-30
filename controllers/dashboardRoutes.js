@@ -14,46 +14,23 @@ router.get("/", userAuth, async (req, res) => {
 //TODO: MAKE THE SEQUELIZE LITERAL WORK!
 router.get("/favorite", userAuth, async (req, res) => {
   try {
-    const favGames = await User.findOne({
+    const favGames = await GameList.findAll({
       where: {
-        id: req.session.userId,
-        // favorite: true,
+        user_id: req.session.userId,
+        favorite: true,
       },
-      attributes: [
-        `id`,
-        `first_name`,
-        `last_name`,
-        `username`,
-        // [
-        //   sequelize.literal(
-        //     "(SELECT (name, description) FROM game WHERE id IN (SELECT game_id FROM gamelist WHERE favorite = 1 AND user_id = user.id)"
-        //   ),
-        //   "favGames",
-        // ],
-      ],
+      attributes: ["id", "user_id", "game_id", "favorite"],
       include: [
         {
-          model: GameList,
-          attributes: ["favorite"],
-          include: {
-            model: Game,
-            attributes: ["name", "description"],
-          },
+          model: Game,
+          attributes: ["id", "name", "description"],
         },
       ],
     });
-    console.log(favGames);
-    // const favGame = favGames.get({ plain: true });
-    // console.log(favGame);
-    // const isFavorite = favGames.get({ plain: true });
-    // let theGames = isFavorite.games;
-    // console.log(isFavorite);
-    // const games = isFavorite.gamelists.map((gamer) =>
-    // gamer.get({ plain: true })
-    // );
-    // console.log(games);
+    const favGame = favGames.map((game) => game.get({ plain: true }));
+    console.log(favGame);
     res.render("favorite", {
-      favGames,
+      favGame,
       loggedIn: req.session.loggedIn,
       username: req.session.username,
     });
@@ -84,9 +61,6 @@ router.get("/wishlist", userAuth, async (req, res) => {
     // console.log(wishGames);
     const wishGame = wishGames.map((game) => game.get({ plain: true }));
     console.log(wishGame);
-    // let { game } = wishGames;
-    // const wishGameList = JSON.stringify(game);
-    // console.log(wishGameList);
     res.render("wishlist", {
       wishGame,
       loggedIn: req.session.loggedIn,
@@ -103,9 +77,9 @@ router.get("/ownership", userAuth, async (req, res) => {
     const ownedGames = await GameList.findAll({
       where: {
         user_id: req.session.userId,
-        owned: true,
+        ownership: true,
       },
-      attributes: ["id", "user_id", "game_id", "ownership"],
+      attributes: ["id", "user_id", "game_id", "favorite"],
       include: [
         {
           model: Game,
@@ -114,7 +88,8 @@ router.get("/ownership", userAuth, async (req, res) => {
       ],
     });
     const ownedGame = ownedGames.map((game) => game.get({ plain: true }));
-    res.render("dashboard", {
+    console.log(ownedGame);
+    res.render("ownership", {
       ownedGame,
       loggedIn: req.session.loggedIn,
       username: req.session.username,
