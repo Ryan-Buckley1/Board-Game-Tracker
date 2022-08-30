@@ -14,7 +14,7 @@ router.get("/", userAuth, async (req, res) => {
 //TODO: MAKE THE SEQUELIZE LITERAL WORK!
 router.get("/favorite", userAuth, async (req, res) => {
   try {
-    const favGames = await User.findAll({
+    const favGames = await User.findOne({
       where: {
         id: req.session.userId,
         // favorite: true,
@@ -35,18 +35,23 @@ router.get("/favorite", userAuth, async (req, res) => {
         {
           model: Game,
           attributes: ["name", "description"],
-          include: {
-            model: GameList,
-            attributes: ["favorite"],
-          },
+          include: [
+            {
+              model: GameList,
+              attributes: ["favorite"],
+            },
+          ],
         },
       ],
     });
     // console.log(favGames);
     // const favGame = favGames.get({ plain: true });
     // console.log(favGame);
-    const isFavorite = favGames.map((gmae) => gmae.get({ plain: true }));
-    console.log(isFavorite);
+    // const isFavorite = favGames.map((gmae) => gmae.get({ plain: true }));
+    // let theGames = isFavorite.games;
+    // console.log(isFavorite);
+    // const games = theGames.map((gamer) => gamer.get({ plain: true }));
+    // console.log(games);
     res.render("favorite", {
       favGames,
       loggedIn: req.session.loggedIn,
