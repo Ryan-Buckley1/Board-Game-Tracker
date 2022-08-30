@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { GameList, Game } = require("../models");
+const sequelize = require("sequelize");
+const { GameList, Game, User } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
@@ -9,24 +10,32 @@ router.get("/", async (req, res) => {
   }
 });
 
+//TODO: MAKE THE SEQUELIZE LITERAL WORK!
 router.get("/favorite", async (req, res) => {
   try {
-    const favGames = await GameList.findAll({
+    const favGames = await User.findOne({
       where: {
-        user_id: req.session.userId,
-        favorite: true,
+        id: req.session.userId,
+        // favorite: true,
       },
-      attributes: ["id", "user_id", "game_id", "favorite"],
-      include: [
-        {
-          model: Game,
-          attributes: ["id", "name", "description"],
-        },
+      attributes: [
+        `id`,
+        `first_name`,
+        `last_name`,
+        `username`,
+        [
+          sequelize.literal(
+            "(SELECT (name, description) FROM game WHERE id IN (SELECT game_id FROM gamelist WHERE favorite = 1 AND user_id = user.id)"
+          ),
+          "favGames",
+        ],
       ],
     });
-    const favGame = favGames.map((game) => game.get({ plain: true }));
+    console.log(favGames);
+    const favGame = favGames.get({ plain: true });
+    console.log(favGame);
     res.render("favorite", {
-      favGame,
+      favGames,
       loggedIn: req.session.loggedIn,
       username: req.session.username,
     });

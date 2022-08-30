@@ -53,7 +53,7 @@ GameList.init(
 
     underscored: true,
 
-    modelName: "game-list",
+    modelName: "gamelist", //CHANGED CAUSE SQL DOES NOT LIKE game-list
   }
 );
 
