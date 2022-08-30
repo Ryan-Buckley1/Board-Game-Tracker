@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
 const { GameList, Game, User } = require("../models");
+const userAuth = require("../utils/userAuth");
 
-router.get("/", async (req, res) => {
+router.get("/", userAuth, async (req, res) => {
   try {
     res.render("dashboard", { loggedIn: req.session.loggedIn });
   } catch (error) {
@@ -11,7 +12,7 @@ router.get("/", async (req, res) => {
 });
 
 //TODO: MAKE THE SEQUELIZE LITERAL WORK!
-router.get("/favorite", async (req, res) => {
+router.get("/favorite", userAuth, async (req, res) => {
   try {
     const favGames = await User.findOne({
       where: {
@@ -45,7 +46,7 @@ router.get("/favorite", async (req, res) => {
   }
 });
 
-router.get("/wishlist", async (req, res) => {
+router.get("/wishlist", userAuth, async (req, res) => {
   try {
     console.log(req.session.userId);
 
@@ -76,7 +77,7 @@ router.get("/wishlist", async (req, res) => {
   }
 });
 
-router.get("/ownership", async (req, res) => {
+router.get("/ownership", userAuth, async (req, res) => {
   try {
     const ownedGames = await GameList.findAll({
       where: {

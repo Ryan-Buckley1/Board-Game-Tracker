@@ -28,11 +28,23 @@ router.get("/signup", (req, res) => {
   res.render("signup", { loggedIn: req.session.loggedIn });
 });
 
-// router.get('/game', async (req,res) => {
-//   const allGames = Game.findAll({
-//     attributes: ['id', 'name', 'description']
-//   })
-// })
+router.get("/game", async (req, res) => {
+  try {
+    const allGames = Game.findAll({
+    attributes: ["id", "name", "description"],
+    include: {
+      model: Category,
+      attributes: ["id", "category_name"],
+    },
+  });
+  const games = allGames.map((game) => game.get({ plain: true }));
+  res.render("allGames", {games})
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error)
+  }
+  
+});
 
 router.get("/game/:id", async (req, res) => {
   try {
