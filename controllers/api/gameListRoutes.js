@@ -3,7 +3,7 @@ const { Game, User, GameList } = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
-    const allGameLists = GameList.findAll({
+    const allGameLists = await GameList.findAll({
       attributes: ["id", "ownership", "favorite", "game_id", "user_id"],
       include: [
         {

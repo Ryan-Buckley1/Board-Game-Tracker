@@ -8,19 +8,21 @@ const game_category_bridge = require("./game_category_bridge");
 User.hasMany(Review);
 User.hasMany(Game);
 User.hasMany(GameList);
+User.belongsToMany(Game, { through: GameList });
 
 Review.belongsTo(User);
 Review.belongsTo(Game);
 
 Game.hasMany(Review);
 Game.belongsToMany(Category, { through: game_category_bridge });
-Game.belongsTo(User);
+Game.belongsToMany(User, { through: GameList });
+// Game.hasMany(GameList);
 Game.hasMany(GameList);
 
 Category.belongsToMany(Game, { through: game_category_bridge });
 
-GameList.belongsTo(User);
-GameList.hasMany(Game);
+// GameList.belongsTo(User);
+// GameList.hasMany(Game);
 
 module.exports = {
   User,

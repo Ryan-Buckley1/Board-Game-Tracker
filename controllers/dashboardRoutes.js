@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
-const { GameList, Game, User } = require("../models");
+const { GameList, Game, User, game_category_bridge } = require("../models");
 const userAuth = require("../utils/userAuth");
 
 router.get("/", userAuth, async (req, res) => {
@@ -14,7 +14,7 @@ router.get("/", userAuth, async (req, res) => {
 //TODO: MAKE THE SEQUELIZE LITERAL WORK!
 router.get("/favorite", userAuth, async (req, res) => {
   try {
-    const favGames = await User.findOne({
+    const favGames = await User.findAll({
       where: {
         id: req.session.userId,
         // favorite: true,
@@ -24,17 +24,29 @@ router.get("/favorite", userAuth, async (req, res) => {
         `first_name`,
         `last_name`,
         `username`,
-        [
-          sequelize.literal(
-            "(SELECT (name, description) FROM game WHERE id IN (SELECT game_id FROM gamelist WHERE favorite = 1 AND user_id = user.id)"
-          ),
-          "favGames",
-        ],
+        // [
+        //   sequelize.literal(
+        //     "(SELECT (name, description) FROM game WHERE id IN (SELECT game_id FROM gamelist WHERE favorite = 1 AND user_id = user.id)"
+        //   ),
+        //   "favGames",
+        // ],
+      ],
+      include: [
+        {
+          model: Game,
+          attributes: ["name", "description"],
+          include: {
+            model: GameList,
+            attributes: ["favorite"],
+          },
+        },
       ],
     });
-    console.log(favGames);
-    const favGame = favGames.get({ plain: true });
-    console.log(favGame);
+    // console.log(favGames);
+    // const favGame = favGames.get({ plain: true });
+    // console.log(favGame);
+    const isFavorite = favGames.map((gmae) => gmae.get({ plain: true }));
+    console.log(isFavorite);
     res.render("favorite", {
       favGames,
       loggedIn: req.session.loggedIn,
@@ -59,6 +71,7 @@ router.get("/wishlist", userAuth, async (req, res) => {
       include: [
         {
           model: Game,
+          foreignKey: "gamelist_id",
           attributes: ["id", "name", "description"],
         },
       ],
