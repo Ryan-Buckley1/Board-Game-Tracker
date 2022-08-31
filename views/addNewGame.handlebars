@@ -1,12 +1,12 @@
-<section>
+<section class="text-white create-game-form">
   <h2>Create New Game</h2>
 
-  <form class="new-game-form needs-validation">
+  <form class="new-game-form needs-validation text-dark">
     <div>
       <label for="validationCustom01">Name:</label>
       <input
         type="text"
-        class="form-control"
+        class="form-controller"
         name="game-name"
         id="validationCustom01"
         required
@@ -14,11 +14,11 @@
       <div class="invalid-feedback">Please Provide a game name</div>
     </div>
     <div>
-      <label for="validationCustom02">Description:</label>
+      <label for="validationCustom02">Description:</label><br/>
       <textarea
         name="game-description"
         id="validationCustom02"
-        class="form-control"
+        class="form-controller"
         required
       ></textarea>
     </div>
@@ -30,7 +30,7 @@
           type="number"
           name="game-min-player"
           id="validationCustom03"
-          class="form-control"
+          class="form-controller"
           min="1"
           max="9"
           required
@@ -43,7 +43,7 @@
           type="number"
           name="game-max-player"
           id="validationCustom04"
-          class="form-control"
+          class="form-controller"
           min="1"
           required
         />
@@ -153,10 +153,13 @@
       </div>
     </div>
     {{! category - model w/checkboxes }}
+
     <div>
       <input type="file" id="image_file" />
     </div>
-    <button type="submit" id="submit-new-game" class="btn">Submit new game</button>
+
+    <button type="submit" id="submit-new-game" class="btn btn-success my-1 text-white">Submit new game</button>
+
   </form>
 </section>
 

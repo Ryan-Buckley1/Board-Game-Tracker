@@ -4,9 +4,15 @@ const router = require("express").Router();
 
 router.get("/", async (req, res) => {
   try {
-    res.render("homepage", { loggedIn: req.session.loggedIn });
+    const allCategories = await Category.findAll({
+      attributes: ["id", "category_name"],
+    });
+    const categories = allCategories.map((category) =>
+      category.get({ plain: true })
+    );
+    res.render("homepage", { categories, loggedIn: req.session.loggedIn });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).json(error);
   }
 });
