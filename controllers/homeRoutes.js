@@ -5,9 +5,15 @@ const router = require("express").Router();
 
 router.get("/", async (req, res) => {
   try {
-    res.render("homepage", { loggedIn: req.session.loggedIn });
+    const allCategories = await Category.findAll({
+      attributes: ["id", "category_name"],
+    });
+    const categories = allCategories.map((category) =>
+      category.get({ plain: true })
+    );
+    res.render("homepage", { categories, loggedIn: req.session.loggedIn });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).json(error);
   }
 });
@@ -31,19 +37,19 @@ router.get("/signup", (req, res) => {
 router.get("/game", async (req, res) => {
   try {
     const allGames = Game.findAll({
-    attributes: ["id", "name", "description"],
-    include: {
-      model: Category,
-      attributes: ["id", "category_name"],
-    },
-  });
-  const games = allGames.map((game) => game.get({ plain: true }));
-  res.render("allGames", {games})
+      attributes: ["id", "name", "description"],
+      include: {
+        model: Category,
+        attributes: ["id", "category_name"],
+      },
+    });
+    const games = allGames.map((game) => game.get({ plain: true }));
+    res.render("allGames", { games });
   } catch (error) {
     console.error(error);
-    res.status(500).json(error)
+    res.status(500).json(error);
   }
-  
+
 });
 
 router.get("/game/:id", async (req, res) => {

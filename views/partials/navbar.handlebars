@@ -1,15 +1,15 @@
-<ul class="nav d-flex justify-content-between fs-3">
+<ul class="nav d-flex justify-content-between fs-3 bg-dark border-warning">
     {{#if loggedIn}}
   <li class="nav-item">
-    <a href="/dashboard" class="nav-link">Dashboard</a>
+    <a href="/dashboard" class="nav-link text-white">Dashboard</a>
     {{else}}
   </li>
   <li class="nav-item">
-       <a href="/signup" class="nav-link text-primary">Sign Up</a>
+       <a href="/signup" class="nav-link text-white fs-2">Sign Up</a>
   </li>
     {{/if}}
   <li class="nav-item">
-    <a class="nav-link text-black fs-1" aria-current="homepage "href="/"><strong>Board Game Tracker</strong></a>
+    <a class="nav-link text-white fs-1" aria-current="homepage "href="/"><strong>Board Game Tracker</strong></a>
   </li>
     {{#if loggedIn}}
   <li class="nav-item">
