@@ -1,6 +1,5 @@
 const session = require("express-session");
 const { Game, User, Category, game_category_bridge } = require("../models");
-
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
@@ -31,19 +30,18 @@ router.get("/signup", (req, res) => {
 router.get("/game", async (req, res) => {
   try {
     const allGames = Game.findAll({
-    attributes: ["id", "name", "description"],
-    include: {
-      model: Category,
-      attributes: ["id", "category_name"],
-    },
-  });
-  const games = allGames.map((game) => game.get({ plain: true }));
-  res.render("allGames", {games})
+      attributes: ["id", "name", "description"],
+      include: {
+        model: Category,
+        attributes: ["id", "category_name"],
+      },
+    });
+    const games = allGames.map((game) => game.get({ plain: true }));
+    res.render("allGames", { games });
   } catch (error) {
     console.error(error);
-    res.status(500).json(error)
+    res.status(500).json(error);
   }
-  
 });
 
 router.get("/game/:id", async (req, res) => {
