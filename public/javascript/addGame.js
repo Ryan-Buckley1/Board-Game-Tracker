@@ -46,26 +46,25 @@ async function newGameHandler(event) {
   const allSelectedCategories = document.querySelectorAll(
     "input[type=checkbox]:checked"
   );
+  const image = document.getElementById("image_file").files[0];
   let category_id = [];
   for (let i = 0; i < allSelectedCategories.length; i++) {
     let catVal = allSelectedCategories[i].value;
     category_id.push(catVal);
   }
 
+  var formData = new FormData();
+  formData.append("uploaded_file", image);
+  formData.append("name", name);
+  formData.append("description", description);
+  formData.append("min_players", min_players);
+  formData.append("max_players", max_players);
+  formData.append("age_rating", age_rating);
+  formData.append("duration", duration);
+  formData.append("category_id", category_id.join(","));
   const response = await fetch(`/api/game`, {
     method: "post",
-    body: JSON.stringify({
-      name,
-      description,
-      min_players,
-      max_players,
-      duration,
-      age_rating,
-      category_id,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
+    body: formData,
   });
   if (response.ok) {
     document.location.replace("/");
@@ -77,3 +76,23 @@ async function newGameHandler(event) {
 // document
 //   .querySelector("#submit-new-game")
 //   .addEventListener("click", newGameHandler);
+
+// var myWidget = cloudinary.createUploadWidget(
+//   {
+//     cloudName: "dtcrmm1fs",
+//     uploadPreset: "board_game",
+//   },
+//   (error, result) => {
+//     if (!error && result && result.event === "success") {
+//       console.log("Done! Here is the image info: ", result.info);
+//     }
+//   }
+// );
+
+// document.getElementById("upload_widget").addEventListener(
+//   "click",
+//   function () {
+//     myWidget.open();
+//   },
+//   false
+// );

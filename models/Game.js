@@ -46,6 +46,10 @@ Game.init(
     //     key: "id",
     //   },
     // },
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
