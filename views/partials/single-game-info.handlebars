@@ -1,0 +1,37 @@
+<article class="game">
+  <div class="name">
+    <h2>{{name}}</h2>
+  </div>
+  <div class="image">
+    <img src="{{image_url}}" alt="{{name}}" />
+  </div>
+  <div class="description">
+    <p>{{description}}</p>
+  </div>
+  <ul>
+    <li class="min-players">
+      Min Players:
+      {{min_players}}
+    </li>
+    <li class="max-players">
+      Max Players:
+      {{max_players}}
+    </li>
+    <li class="duration">
+      Can play game in
+      {{duration}}
+      hours
+    </li>
+    <li class="age-rating">
+      Age Rating:
+      {{age_rating}}
+      yrs old
+    </li>
+    {{#each categories}}
+      <li class="category">
+        Game Category:
+        {{category_name}}
+      </li>
+    {{/each}}
+  </ul>
+</article>

@@ -1,0 +1,7 @@
+<h2>{{category_name}} Games</h2>
+
+{{#each category.games as |game|}}
+  <h4>
+    <a href="/game/{{id}}">{{name}}</a> ({{description}})
+  </h4>
+{{/each}}

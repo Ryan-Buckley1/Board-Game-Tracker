@@ -1,0 +1,9 @@
+<h2>Select which category in which you would like to see the games!</h2>
+
+<ul>
+  {{#each categories}}
+    <li>
+      <a href="/category/{{id}}">{{category_name}}</a>
+    </li>
+  {{/each}}
+</ul>

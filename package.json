@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seed/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,17 @@
   "homepage": "https://github.com/Ryan-Buckley1/Board-Game-Tracker#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cloudinary": "^1.31.0",
     "connect-session-sequelize": "^7.1.4",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.21.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

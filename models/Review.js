@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const bcrypt = require('bcrypt');
 
 class Review extends Model { }
 
@@ -30,6 +29,22 @@ Review.init(
             validate: {
                 max: 5
             }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
+        game_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'game',
+                key: 'id'
+            }
         }
 
     },
@@ -37,7 +52,7 @@ Review.init(
     {
         sequelize,
 
-        timestamps: false,
+        timestamps: true,
 
         freezeTableName: true,
 
