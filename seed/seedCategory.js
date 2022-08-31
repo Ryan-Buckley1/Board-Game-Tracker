@@ -82,6 +82,30 @@ const categoryData = [
     {
         category_name: 'Expansion'
     },
+    {
+        category_name: 'Music'
+    },
+    {
+        category_name: 'Economy'
+    },
+    {
+        category_name: 'Electronic'
+    },
+    {
+        category_name: 'Western'
+    },
+    {
+        category_name: 'Bluffing'
+    },
+    {
+        category_name: 'Colors'
+    },
+    {
+        category_name: 'Mystery'
+    },
+    {
+        category_name: 'Drinking'
+    },
 ];
 const seedCategory = () => Category.bulkCreate(categoryData);
 
