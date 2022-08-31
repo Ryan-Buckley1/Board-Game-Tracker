@@ -1,6 +1,5 @@
 const session = require("express-session");
 const { Game, User, Category, game_category_bridge } = require("../models");
-
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
@@ -49,7 +48,6 @@ router.get("/game", async (req, res) => {
     console.error(error);
     res.status(500).json(error);
   }
-
 });
 
 router.get("/game/:id", async (req, res) => {

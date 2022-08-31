@@ -1,4 +1,16 @@
 const router = require("express").Router();
+const multer = require("multer");
+const os = require("os");
+const upload = multer({ dest: os.tmpdir() });
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: "dtcrmm1fs",
+  api_key: "926534918754513",
+  api_secret: process.env.API_SECRET,
+  secure: true,
+});
+
 const {
   Game,
   Category,
@@ -82,8 +94,13 @@ router.get("/name/:name", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single("uploaded_file"), async (req, res) => {
   try {
+    console.log("made it, yo");
+    console.log(req.body);
+    console.log(req.file);
+    const uploadedImage = await cloudinary.uploader.upload(req.file.path);
+
     const newGame = await Game.create({
       name: req.body.name,
       description: req.body.description,
@@ -91,10 +108,11 @@ router.post("/", async (req, res) => {
       max_players: req.body.max_players,
       duration: req.body.duration,
       age_rating: req.body.age_rating,
-      user_id: req.session.userId,
+      // user_id: req.session.userId,
       // category_id: req.body.category_id,
+      image_url: uploadedImage.url,
     });
-    const categories = req.body.category_id.map((category) => {
+    const categories = req.body.category_id.split(",").map((category) => {
       console.log(category);
       return { game_id: newGame.id, category_id: category };
     });
