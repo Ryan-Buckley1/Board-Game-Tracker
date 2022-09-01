@@ -97,8 +97,7 @@ router.put("/userPref/:game_id", async (req, res) => {
         favorite: req.body.favorite,
         wishlist: req.body.ownership,
       });
-      res.json(newPref);
-      return;
+      return res.json(newPref);
     }
 
     //IF THEY DO IT WILL UPDATE THE ONE THEY CURRENTLY HAVE
@@ -108,10 +107,10 @@ router.put("/userPref/:game_id", async (req, res) => {
         game_id: req.params.game_id,
       },
     });
-    res.json(updatedPref);
+    return res.json(updatedPref);
   } catch (error) {
     console.error(error);
-    res.status(500).json(error);
+    return res.status(500).json(error);
   }
 });
 

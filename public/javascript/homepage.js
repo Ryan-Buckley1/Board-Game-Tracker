@@ -2,15 +2,12 @@
 
 function searchBarHandler(event) {
   event.preventDefault();
-  console.log("clicked");
 
   const searchFor = document.querySelector(
     'select[name="searchSelector"]'
   ).value;
 
   const searchee = document.querySelector("#search").value || null;
-  console.log(`searchee ${searchee}`);
-  console.log(`searchFor ${searchFor}`);
 
   if (searchee == null && searchFor == 1) {
     console.log("it in hurr");
@@ -29,7 +26,7 @@ function searchBarHandler(event) {
     return window.location.replace(`./search/category/${searchee}`);
     //redirect to category by name
   } else {
-    console.log("broked");
+    alert("Make sure you chose an option of what to search for!");
   }
 }
 
