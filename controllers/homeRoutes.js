@@ -2,7 +2,6 @@ const session = require("express-session");
 const { Game, User, Category, game_category_bridge } = require("../models");
 const router = require("express").Router();
 
-
 //RENDERS HOMEPAGE
 router.get("/", async (req, res) => {
   try {
@@ -13,7 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-
 //RENDERS LOGIN PAGE FOR USER TO LOG IN AT
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
@@ -23,7 +21,6 @@ router.get("/login", (req, res) => {
   res.render("login", { loggedIn: req.session.loggedIn });
 });
 
-
 //RENDERS SIGNUP SHEET FOR USER TO FILL OUT
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
@@ -32,7 +29,6 @@ router.get("/signup", (req, res) => {
   }
   res.render("signup", { loggedIn: req.session.loggedIn });
 });
-
 
 //RENDERS ALL GAMES PAGE WITH ALL OF THE GAMES CURRENTLY IN THE DB
 router.get("/game", async (req, res) => {
@@ -51,7 +47,6 @@ router.get("/game", async (req, res) => {
     res.status(500).json(error);
   }
 });
-
 
 //RENDERS SINGLE GAME VIEW FOR A GAME THAT WAS SELECTED BY THE USER
 router.get("/game/:id", async (req, res) => {
@@ -85,7 +80,6 @@ router.get("/game/:id", async (req, res) => {
   }
 });
 
-
 //RENDERS CATEGORIES PAGE FOR USER TO SEE ALL OF THE CATEGORIES CURRENTLY ON DB
 router.get("/category", async (req, res) => {
   try {
@@ -102,7 +96,6 @@ router.get("/category", async (req, res) => {
   }
 });
 
-
 //RENDERS SINGLE CATEGORY PAGE FOR USER TO SEE WHAT GAMES ARE IN THAT CATEGORY
 router.get("/category/:id", async (req, res) => {
   try {
@@ -113,11 +106,12 @@ router.get("/category/:id", async (req, res) => {
       attributes: ["id", "category_name"],
       include: {
         model: Game,
-        attributes: ["id", "name", "description"],
+        attributes: ["id", "name", "description", "image_url"],
         through: game_category_bridge,
       },
     });
     const category = catGames.get({ plain: true });
+    console.log(category);
     res.render("single-category", { category, loggedIn: req.session.loggedIn });
   } catch (error) {
     console.error(error);
