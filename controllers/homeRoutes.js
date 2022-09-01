@@ -111,7 +111,6 @@ router.get("/category/:id", async (req, res) => {
       },
     });
     const category = catGames.get({ plain: true });
-    console.log(category);
     res.render("single-category", { category, loggedIn: req.session.loggedIn });
   } catch (error) {
     console.error(error);

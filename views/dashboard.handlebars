@@ -5,9 +5,16 @@
 </div>
 <h1 class="text-white fs-1">
 Hey there {{username}}! <br/>
-Here's a list of the games you own!
+Here's a list of your favorite games!
 </h1>
+<div class="container-fluid">
+  <div class="px-lg-5">
+<div class="row">
 
 {{#each favOwnedGame}}
 {{> multiple-game-info game}}
 {{/each}}
+</div>
+</div>
+</div>
+

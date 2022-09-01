@@ -1,0 +1,11 @@
+body {
+    background: rgb(41, 42, 45);
+  }
+
+  img {
+    width:500px !important;
+    height: 420px !important;
+  }
+  .card-bottom {
+    min-height: 25vh;
+  }

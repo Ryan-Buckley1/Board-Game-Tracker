@@ -568,6 +568,9 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
   color: black;
   background-color: rgba(236, 221, 221, 0.85);
 }
+.allCard {
+  background-color:rgb(52, 58, 64);
+}
 @media only screen and (max-width: 768px) {
   *{
     position: relative;
@@ -596,14 +599,25 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
 
   .custom-form {
     position: absolute;
-    left: 25vw !important;
-    top: 10vh !important;
+    left: 15vw !important;
+    top: 2vh !important;
   }
 
   .new-game-form {
     position: absolute;
-    left: 4vw !important;
+    left: 2vw !important;
+    width: 92vw !important;
   }
+  #validationCustom02 {
+    height: 12vh;
+    width: 75vw !important;
+    resize: none;
+}
+#validationCustom01{
+    width: 75vw !important;
+}
+#validationCustom03{width: 75vw !important;}
+#validationCustom04{width: 75vw !important;}
   .modal-body {
     max-height: 50vh;
     overflow-y: scroll;
@@ -632,6 +646,9 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
     3px 3px 0 #000000,
     2px -2px 0 #000000,
     -1px -1px 0 #000000;
+  }
+  #password-login, #email-login {
+    width: fit-content;
   }
 }
   
