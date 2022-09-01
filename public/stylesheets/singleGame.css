@@ -7,6 +7,7 @@
 .card {
     border: 1px solid white;
     text-transform: capitalize;
+    padding:15px;
 }
 h3 {
     text-decoration: underline;
@@ -20,34 +21,37 @@ h3 {
     background-color:rgb(52, 58, 64) ;
     width: fit-content;
     position: absolute;
-    left: 59.8vw;
-    top: 35vh;
+    left: 45.8vw;
+    top: 9vh;
 
     color: white;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid white;
+    font-size: 14.5;
 }
+
 #submitPrefs {
     position: relative;
-    left: 20%;
+    left: 0;
 }
 
 @media only screen and (max-width: 768px) {
     .cardList {
         position: absolute;
-        left: 0;
+        left: -3vw;
         top: 1vh;
     }
     .pref-form {
-        font-size: small;
-        width: fit-content;
-        padding: 0, 7px;
+        width: 22vw;
         position: absolute;
-        left: 70.75vw;
-        height: 20vh;
+        left: 77.7vw;
+        height:20vh;
         padding-top: 1rem;
     }
-    .pref-form input{
-        margin-bottom: 1rem;
+    #submitPrefs {
+        position: relative;
+        left:-0.65vw;
+       top: 4.5vh;
+        width:20vw;
     }
 }
