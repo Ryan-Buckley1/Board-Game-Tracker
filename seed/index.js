@@ -8,7 +8,7 @@ const seedUser = require("./seedUser");
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  await seedUser();
+  // await seedUser();
 
   await seedCategory();
 
@@ -16,7 +16,7 @@ const seedAll = async () => {
 
   await seedGameCategoryBridge();
 
-  await seedGameList();
+  // await seedGameList();
 
   process.exit(0);
 };
