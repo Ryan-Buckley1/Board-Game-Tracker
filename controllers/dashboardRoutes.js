@@ -16,7 +16,7 @@ router.get("/", userAuth, async (req, res) => {
       include: [
         {
           model: Game,
-          attributes: ["id", "name", "description"],
+          attributes: ["id", "name", "description", "image_url"],
         },
       ],
     });
