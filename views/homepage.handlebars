@@ -12,12 +12,12 @@
       <form>
         <div class="inner-form">
 
+              {{#if loggedIn}}
+              <a class="nav-link btn btn-primary" id="createGameBtn" href="/create/game">Create A Game</a>
+              {{/if}}
             <div class="input-field first-wrap">
             <input id="search" type="text" placeholder="Search a game by name" />
             <div class="d-flex justify-content-center">
-              {{#if loggedIn}}
-              <a class="nav-link text-white mt-2 text-decoration-underline" href="/create/game">Create A Game</a>
-              {{/if}}
             </div>
           </div>
           <div class="input-field second-wrap">

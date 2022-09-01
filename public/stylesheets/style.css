@@ -484,33 +484,52 @@ legend {
     font-size: 16px;
   }
 }
+.game-duration {
+  margin-top: -0.5rem;
+}
+#createGameBtn {
+  margin-right: 2rem;
+}
+#catBtn {
 
-.login-form {
-    display: inline-block;
+}
+
+.addImg label{
+ margin-bottom: -10px;
+ font-weight: bold;
+}
+#submit-new-game {
+  margin-top: 1.25rem;
+}
+
+@media only screen and (max-width: 768px) {
+  *{
+    position: relative;
+  }
+  body {
     position: absolute;
-    left: 45vw;
-    top:25vh;
-    padding: 10px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-}
+    left: 0vw;
+    top: 0vh;
+  }
 
-
-.create-game-form input {
-    display: flex;
-
-}
-.create-game-form {
+  .custom-form {
     position: absolute;
-    top: 17vh;
-    left: 40vw;
-}
+    left: 25vw !important;
+    top: 10vh !important;
+  }
 
-.new-game-form {
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid black;
-    width:fit-content;
-    padding: 10px;
-    background-color: white;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  .new-game-form {
+    position: absolute;
+    left: 4vw !important;
+  }
+  .modal-body {
+    max-height: 50vh;
+    overflow-y: scroll;
+  }
+  #createGameBtn {
+    margin-bottom: 1rem;
+    width: 100%;
+    left: 3vw;
+  }
+
 }

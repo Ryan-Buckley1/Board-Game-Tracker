@@ -1,9 +1,9 @@
-<section class="text-white create-game-form">
-  <h2>Create New Game</h2>
+<link rel="stylesheet" href="/stylesheets/signup.css">
 
-  <form class="new-game-form needs-validation text-dark">
+  <form class="custom-form needs-validation new-game-form">
+  <h2>Create New Game</h2>
     <div>
-      <label for="validationCustom01">Name:</label>
+      <label for="validationCustom01">Name:</label><br/>
       <input
         type="text"
         class="form-controller"
@@ -13,6 +13,7 @@
       />
       <div class="invalid-feedback">Please Provide a game name</div>
     </div>
+    
     <div>
       <label for="validationCustom02">Description:</label><br/>
       <textarea
@@ -25,7 +26,7 @@
     <div class="form-group">
       <div>
 
-        <label for="validationCustom03">Minimum number of players:</label>
+        <label for="validationCustom03">Minimum number of players:</label><br/>
         <input
           type="number"
           name="game-min-player"
@@ -38,7 +39,7 @@
         <div class="invalid-feedback">Please enter a number 1 - 9</div>
       </div>
       <div>
-        <label for="validationCustom04">Maximum number of players:</label>
+        <label for="validationCustom04">Maximum number of players:</label><br/>
         <input
           type="number"
           name="game-max-player"
@@ -51,8 +52,71 @@
       </div>
     </div>
     <div class="form-group">
+      <button
+        type="button"
+        class="btn btn-light catBtn"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Categories
+      </button>
+
+      <div
+        class="modal fade text-black"
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Game Categories</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span class="text-white" aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {{#each categories}}
+                <div class="custom-control custom-checkbox col-4">
+                  <input
+                    type="checkbox"
+                    class="custom-control-input"
+                    id="customCheck{{id}}"
+                    value="{{id}}"
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="customCheck{{id}}"
+                  >{{category_name}}</label>
+              </div>
+              {{/each}}
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >Close</button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-dismiss="modal"
+              >Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group game-duration">
       <div>
-        <label for="game-duration">How long the game takes to play:</label>
+        <label for="game-duration">How long does the game take to play?:</label><br/>
         <select
           name="game-duration"
           id="game-duration"
@@ -67,7 +131,7 @@
       </div>
       <div>
         <label for="game-age-rating">What age range is appropriate for this
-          game:</label>
+          game?:</label><br/> 
         <select
           name="game-age-rating"
           id="game-age-rating"
@@ -89,79 +153,18 @@
         </select>
       </div>
     </div>
-    <div class="form-group">
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-toggle="modal"
-        data-target="#exampleModal"
-      >
-        Categories
-      </button>
-
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Game Categories</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              {{#each categories}}
-                <div class="custom-control custom-checkbox">
-                  <input
-                    type="checkbox"
-                    class="custom-control-input"
-                    id="customCheck{{id}}"
-                    value="{{id}}"
-                  />
-                  <label
-                    class="custom-control-label"
-                    for="customCheck{{id}}"
-                  >{{category_name}}</label>
-                </div>
-              {{/each}}
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >Close</button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-dismiss="modal"
-              >Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="addImg">
+      <label for="image_file">Upload Image of Game</label><br/>
+      <input type="file" class="my-3" id="image_file" />
     </div>
     {{! category - model w/checkboxes }}
 
-    <div>
-      <input type="file" id="image_file" />
-    </div>
 
-    <button type="submit" id="submit-new-game" class="btn btn-success my-1 text-white">Submit new game</button>
+
+    <button type="submit" id="submit-new-game" class="btn btn-primary">Submit new game</button>
+
 
   </form>
-</section>
 
 {{! <button id="upload_widget" class="cloudinary-button">Upload files</button>
 
