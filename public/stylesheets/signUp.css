@@ -39,8 +39,8 @@ body {
 
 
 
-.custom-select {
-    width: fit-content;
+.custom-select, .custom-form input {
+    width: 15vw;
 }
 .modal-header, .modal-body, .modal-footer {
     display: flex;
@@ -54,3 +54,8 @@ body {
     max-height: 75vh;
     overflow: scroll;
   }
+.gameDesc textarea {
+    height: 12vh;
+    width: 15vw;
+    resize: none;
+}

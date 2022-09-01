@@ -1,4 +1,3 @@
-
 .cardList {
     position: absolute;
     left:45vw;
@@ -7,6 +6,9 @@
 .card {
     border: 1px solid white;
     text-transform: capitalize;
+}
+.card-text {
+    
 }
 h3 {
     text-decoration: underline;

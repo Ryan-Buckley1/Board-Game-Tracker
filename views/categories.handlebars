@@ -1,9 +1,14 @@
-<h2>Select which category in which you would like to see the games!</h2>
-
-<ul>
-  {{#each categories}}
-    <li>
-      <a href="/category/{{id}}">{{category_name}}</a>
-    </li>
-  {{/each}}
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-lg-5 catBoxDiv">
+      <h6 class="fs-1 text-white">Categories:</h6> 
+      <ul class="list-group allCatBox row">
+        {{#each categories}}
+        <li class="list-group">
+          <a class="" href="/category/{{id}}">{{category_name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
