@@ -3,9 +3,15 @@
 <a class="btn" href="/dashboard/ownership">View Owned Games</a>
 <a class="btn" href="/dashboard/wishlist">View Wishlist</a>
 </div>
-<h1>{{username}}'s Wishlist!</h1>
+<h1 class="text-white">{{username}}'s Wishlist!</h1>
 
+<div class="container-fluid">
+  <div class="px-lg-5">
+<div class="row">
 {{#each wishGame}}
 {{!-- <p>{{wishlist}}</p> --}}
 {{> multiple-game-info game}}
 {{/each}}
+</div>
+  </div>
+</div>
