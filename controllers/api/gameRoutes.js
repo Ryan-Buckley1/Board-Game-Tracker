@@ -4,13 +4,14 @@ const os = require("os");
 const upload = multer({ dest: os.tmpdir() });
 const cloudinary = require("cloudinary").v2;
 
+//CLOUDINARY CONFIG -- REQUIRED FOR CLOUDINARY
 cloudinary.config({
   cloud_name: "dtcrmm1fs",
   api_key: "926534918754513",
   api_secret: process.env.API_SECRET,
   secure: true,
 });
-
+//IMPORT MODELS
 const {
   Game,
   Category,
@@ -18,6 +19,7 @@ const {
   game_category_bridge,
 } = require("../../models");
 
+//ROUTE TO GET ALL GAMES
 router.get("/", async (req, res) => {
   try {
     const allGames = await Game.findAll({
@@ -40,6 +42,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//ROUTE TO GET GAME BY ID
 router.get("/:id", async (req, res) => {
   try {
     const singleGame = await Game.findOne({
@@ -76,6 +79,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+//ROUTE TO GET GAME BY NAME
 router.get("/name/:name", async (req, res) => {
   try {
     const namedGame = await Game.findOne({
@@ -94,13 +98,14 @@ router.get("/name/:name", async (req, res) => {
   }
 });
 
+//POST ROUTE USED IN FRONT END TO CREATE GAME INCLUDING AN IMAGE FROM USER
 router.post("/", upload.single("uploaded_file"), async (req, res) => {
   try {
-    console.log("made it, yo");
-    console.log(req.body);
-    console.log(req.file);
+    //IF THE REQUEST HAS AN IMAGE IT WILL RUN THIS WAY
     if (req.file) {
-      const uploadedImage = await cloudinary.uploader.upload(req.file.path);
+      const uploadedImage = await cloudinary.uploader.upload(req.file.path, {
+        eager: [{ width: 300, height: 300, crop: crop }],
+      });
       const newGame = await Game.create({
         name: req.body.name,
         description: req.body.description,
@@ -112,13 +117,15 @@ router.post("/", upload.single("uploaded_file"), async (req, res) => {
         // category_id: req.body.category_id,
         image_url: uploadedImage.url,
       });
+      //BREAKS DOWN CATEGORIES TO INDIVIDUALS
       const categories = req.body.category_id.split(",").map((category) => {
-        console.log(category);
         return { game_id: newGame.id, category_id: category };
       });
-      console.log(categories);
+      //SENDS EACH OF THE NEW CATEGORIES TO GAMECATEGORYBRIDGE TO CREATE THE ASSOCIATIONS
       const bridge = await game_category_bridge.bulkCreate(categories);
       res.json(newGame);
+
+      //IF THE REQUEST DOES NOT HAVE AN IMAGE IT WILL RUN THIS WAY
     } else {
       const newGame = await Game.create({
         name: req.body.name,

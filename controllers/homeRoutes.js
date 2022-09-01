@@ -2,21 +2,19 @@ const session = require("express-session");
 const { Game, User, Category, game_category_bridge } = require("../models");
 const router = require("express").Router();
 
+
+//RENDERS HOMEPAGE
 router.get("/", async (req, res) => {
   try {
-    const allCategories = await Category.findAll({
-      attributes: ["id", "category_name"],
-    });
-    const categories = allCategories.map((category) =>
-      category.get({ plain: true })
-    );
-    res.render("homepage", { categories, loggedIn: req.session.loggedIn });
+    res.render("homepage", { loggedIn: req.session.loggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
   }
 });
 
+
+//RENDERS LOGIN PAGE FOR USER TO LOG IN AT
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -25,6 +23,8 @@ router.get("/login", (req, res) => {
   res.render("login", { loggedIn: req.session.loggedIn });
 });
 
+
+//RENDERS SIGNUP SHEET FOR USER TO FILL OUT
 router.get("/signup", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -33,6 +33,8 @@ router.get("/signup", (req, res) => {
   res.render("signup", { loggedIn: req.session.loggedIn });
 });
 
+
+//RENDERS ALL GAMES PAGE WITH ALL OF THE GAMES CURRENTLY IN THE DB
 router.get("/game", async (req, res) => {
   try {
     const allGames = await Game.findAll({
@@ -50,6 +52,8 @@ router.get("/game", async (req, res) => {
   }
 });
 
+
+//RENDERS SINGLE GAME VIEW FOR A GAME THAT WAS SELECTED BY THE USER
 router.get("/game/:id", async (req, res) => {
   try {
     const oneGame = await Game.findOne({
@@ -74,7 +78,6 @@ router.get("/game/:id", async (req, res) => {
       ],
     });
     const game = oneGame.get({ plain: true });
-    console.log(game);
     res.render("single-game-view", { game, loggedIn: req.session.loggedIn });
   } catch (error) {
     console.error(error);
@@ -82,6 +85,8 @@ router.get("/game/:id", async (req, res) => {
   }
 });
 
+
+//RENDERS CATEGORIES PAGE FOR USER TO SEE ALL OF THE CATEGORIES CURRENTLY ON DB
 router.get("/category", async (req, res) => {
   try {
     const allCategories = await Category.findAll({
@@ -97,6 +102,8 @@ router.get("/category", async (req, res) => {
   }
 });
 
+
+//RENDERS SINGLE CATEGORY PAGE FOR USER TO SEE WHAT GAMES ARE IN THAT CATEGORY
 router.get("/category/:id", async (req, res) => {
   try {
     const catGames = await Category.findOne({
@@ -111,7 +118,6 @@ router.get("/category/:id", async (req, res) => {
       },
     });
     const category = catGames.get({ plain: true });
-    console.log(category);
     res.render("single-category", { category });
   } catch (error) {
     console.error(error);

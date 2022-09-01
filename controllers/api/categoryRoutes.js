@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Game, Category, game_category_bridge } = require("../../models");
 
+//GET ALL CATEGORIES
 router.get('/', async (req, res) => {
     try {
         const allCategories = await Category.findAll({
@@ -13,6 +14,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+//GETS SINGLE CATEGORY AND INCLUDES THE GAMES THAT ARE ASSOCIATED WITH IT THROUGH THE GAMECATEGORYBRIDGE TABLE (IN ASSOCIATIONS)
 router.get('/:id', async (req, res) => {
     try {
         const singleCategory = await Category.findOne({

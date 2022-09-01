@@ -1,4 +1,5 @@
-//add js for homepage
+
+//FUNCTION HANDLES THE SEARCH THAT THE USER DOES ON THE HOMEPAGE
 
 function searchBarHandler(event) {
   event.preventDefault();
@@ -12,25 +13,23 @@ function searchBarHandler(event) {
   console.log(`searchee ${searchee}`);
   console.log(`searchFor ${searchFor}`);
 
-  //   if (searchFor === null && searchee !== "") {
-  //     //return error = please select a type of search you would like to do
-  //   }
+
   if (searchee == null && searchFor == 1) {
     console.log("it in hurr");
-    window.location.replace("../game");
-    //redirect all game
+    window.location.replace("./game");
+    //redirect to all game
   }
   if (searchee == null && searchFor == 2) {
     return window.location.replace("./category");
-    //redirect all category
+    //redirect to all category
   }
   if (searchee !== null && searchFor == 1) {
     return window.location.replace(`./search/game/${searchee}`);
-    //redirect game by name
+    //redirect to game by name
   }
   if (searchee !== null && searchFor == 2) {
-    return window.location.replace(`../search/category/${searchee}`);
-    //redirect category by name
+    return window.location.replace(`./search/category/${searchee}`);
+    //redirect to category by name
   } else {
     console.log("broked");
   }
