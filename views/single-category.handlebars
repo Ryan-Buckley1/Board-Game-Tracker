@@ -1,5 +1,14 @@
-<h2>{{category_name}} Games</h2>
+<div class="viewFilters">
+<h2 class="text-white" style="margin-left: 4rem; font-weight: bold">{{category.category_name}} Games</h2>
 
+</div>
+<div class="container-fluid">
+  <div class="px-lg-5">
+<div class="row">
 {{#each category.games }}
   {{> multiple-game-info}}
 {{/each}}
+<h3><a class="text-decoration-none text-white fs-1 backToList fa fa-arrow-left" style="font-weight:bold" href="/category/"> Back to List of Categories</a></h3>
+</div>
+  </div>
+</div>

@@ -44,7 +44,7 @@ router.get("/category/:name", async (req, res) => {
       attributes: ["id", "category_name"],
       include: {
         model: Game,
-        attributes: ["id", "name", "description"],
+        attributes: ["id", "name", "description", "image_url"],
         through: game_category_bridge,
       },
     });
