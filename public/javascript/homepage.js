@@ -1,4 +1,3 @@
-
 //FUNCTION HANDLES THE SEARCH THAT THE USER DOES ON THE HOMEPAGE
 
 function searchBarHandler(event) {
@@ -12,7 +11,6 @@ function searchBarHandler(event) {
   const searchee = document.querySelector("#search").value || null;
   console.log(`searchee ${searchee}`);
   console.log(`searchFor ${searchFor}`);
-
 
   if (searchee == null && searchFor == 1) {
     console.log("it in hurr");
