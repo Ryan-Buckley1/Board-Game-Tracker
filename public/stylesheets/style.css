@@ -545,15 +545,13 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
   text-shadow: rgb(182, 178, 178) 1px 1px 1px;
 }
 .catBoxDiv h6 {
-    width: 33vw;
-    margin: 0 , auto;
     font-weight: bolder;
     text-shadow: -1px 1px 0 #000000,
     3px 3px 0 #000000,
     2px -2px 0 #000000,
     -1px -1px 0 #000000;
     position: relative;
-    left: 90%;
+    left: 10%;
 }
 .viewFilters {
   background-color: rgb(52, 58, 64);
@@ -578,7 +576,6 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
     position: absolute;
     left: 0vw;
     top: 0vh;
-    overflow: hidden !important;
   }
   .nav {
     width:100vw;
@@ -619,6 +616,7 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
   .catBoxDiv {
     position: absolute;
     left: 25vw;
+    width:fit-content;
     
   }
   .allCatBox {
@@ -629,10 +627,8 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
   
   
   .catBoxDiv h6 {
-    width: 33vw;
-    margin-left: 1rem;
     font-weight: bolder;
-    text-shadow: -1px 1px 0 #41ba45,
+    text-shadow: -1px 1px 0 #000000,
     3px 3px 0 #000000,
     2px -2px 0 #000000,
     -1px -1px 0 #000000;
