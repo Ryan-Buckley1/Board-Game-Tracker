@@ -26,7 +26,7 @@ function searchBarHandler(event) {
     return window.location.replace(`./search/category/${searchee}`);
     //redirect to category by name
   } else {
-    alert("Make sure you chose an option of what to search for!");
+    console.log("goofed");
   }
 }
 
