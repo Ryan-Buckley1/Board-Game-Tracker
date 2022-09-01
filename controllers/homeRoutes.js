@@ -75,7 +75,7 @@ router.get("/game/:id", async (req, res) => {
     });
     const game = oneGame.get({ plain: true });
     console.log(game);
-    res.render("single-game-view", { game });
+    res.render("single-game-view", { game, loggedIn: req.session.loggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).json(error);

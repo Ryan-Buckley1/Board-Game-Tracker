@@ -1,10 +1,13 @@
 {{> single-game-info game}}
 {{#if loggedIn}}
-<button id="addToFavorite">Add to favorite</button>
-<button id="addToWishlist">Add to wishlist</button>
-<button id="addToOwned">Add to owned</button>
+<form class="pref-form">
+<input type="checkbox" name="favorite" id="addToFavorite" >Add to Favorite
+<input type="checkbox" name="ownership" id="addToOwnership" >Add to Owned
+<input type="checkbox" name="wishlist" id="addToWishlist" > Add to Wishlist
+<button type="submit" class="btn btn-success my-1 text-white" id="submitPrefs">Submit</button>
+
+</form>
 {{/if}}
-<script src="/javascript/addFavorite.js"></script>
-<script src="/javascript/addOwnership.js"></script>
-<script src="/javascript/addWishlist.js"></script>
+<script src="/javascript/userPref.js"></script>
+
 {{!-- TODO:  NEED TO ADD BUTTONS FOR ADDING TO WISHLIST/OWNERSHIP/FAVORITE --}}

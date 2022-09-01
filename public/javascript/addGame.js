@@ -46,7 +46,7 @@ async function newGameHandler(event) {
   const allSelectedCategories = document.querySelectorAll(
     "input[type=checkbox]:checked"
   );
-  const image = document.getElementById("image_file").files[0];
+  const image = document.getElementById("image_file").files[0] || null;
   let category_id = [];
   for (let i = 0; i < allSelectedCategories.length; i++) {
     let catVal = allSelectedCategories[i].value;

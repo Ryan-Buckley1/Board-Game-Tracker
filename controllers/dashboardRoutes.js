@@ -11,7 +11,6 @@ router.get("/", userAuth, async (req, res) => {
   }
 });
 
-//TODO: MAKE THE SEQUELIZE LITERAL WORK!
 router.get("/favorite", userAuth, async (req, res) => {
   try {
     const favGames = await GameList.findAll({
@@ -58,7 +57,7 @@ router.get("/wishlist", userAuth, async (req, res) => {
         },
       ],
     });
-    // console.log(wishGames);
+    console.log(wishGames);
     const wishGame = wishGames.map((game) => game.get({ plain: true }));
     console.log(wishGame);
     res.render("wishlist", {

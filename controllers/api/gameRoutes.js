@@ -99,26 +99,45 @@ router.post("/", upload.single("uploaded_file"), async (req, res) => {
     console.log("made it, yo");
     console.log(req.body);
     console.log(req.file);
-    const uploadedImage = await cloudinary.uploader.upload(req.file.path);
-
-    const newGame = await Game.create({
-      name: req.body.name,
-      description: req.body.description,
-      min_players: req.body.min_players,
-      max_players: req.body.max_players,
-      duration: req.body.duration,
-      age_rating: req.body.age_rating,
-      // user_id: req.session.userId,
-      // category_id: req.body.category_id,
-      image_url: uploadedImage.url,
-    });
-    const categories = req.body.category_id.split(",").map((category) => {
-      console.log(category);
-      return { game_id: newGame.id, category_id: category };
-    });
-    console.log(categories);
-    const bridge = await game_category_bridge.bulkCreate(categories);
-    res.json(newGame);
+    if (req.file) {
+      const uploadedImage = await cloudinary.uploader.upload(req.file.path);
+      const newGame = await Game.create({
+        name: req.body.name,
+        description: req.body.description,
+        min_players: req.body.min_players,
+        max_players: req.body.max_players,
+        duration: req.body.duration,
+        age_rating: req.body.age_rating,
+        // user_id: req.session.userId,
+        // category_id: req.body.category_id,
+        image_url: uploadedImage.url,
+      });
+      const categories = req.body.category_id.split(",").map((category) => {
+        console.log(category);
+        return { game_id: newGame.id, category_id: category };
+      });
+      console.log(categories);
+      const bridge = await game_category_bridge.bulkCreate(categories);
+      res.json(newGame);
+    } else {
+      const newGame = await Game.create({
+        name: req.body.name,
+        description: req.body.description,
+        min_players: req.body.min_players,
+        max_players: req.body.max_players,
+        duration: req.body.duration,
+        age_rating: req.body.age_rating,
+        // user_id: req.session.userId,
+        // category_id: req.body.category_id,
+      });
+      const categories = req.body.category_id.split(",").map((category) => {
+        console.log(category);
+        return { game_id: newGame.id, category_id: category };
+      });
+      console.log(categories);
+      const bridge = await game_category_bridge.bulkCreate(categories);
+      res.json(newGame);
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json(error);

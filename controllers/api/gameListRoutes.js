@@ -153,4 +153,39 @@ router.put("ownership/:game_id", async (req, res) => {
   }
 });
 
+router.put("/userPref/:game_id", async (req, res) => {
+  try {
+    console.log("made it to route");
+    const existingPref = await GameList.findOne({
+      where: {
+        user_id: req.session.userId,
+        game_id: req.params.game_id,
+      },
+    });
+    if (!existingPref) {
+      console.log("new pref");
+      const newPref = await GameList.create({
+        user_id: req.session.userId,
+        game_id: req.params.game_id,
+        ownership: req.body.ownership,
+        favorite: req.body.favorite,
+        wishlist: req.body.ownership,
+      });
+      res.json(newPref);
+      return;
+    }
+    console.log("updated pref");
+    const updatedPref = await GameList.update(req.body, {
+      where: {
+        user_id: req.session.userId,
+        game_id: req.params.game_id,
+      },
+    });
+    res.json(updatedPref);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;
