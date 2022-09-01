@@ -1,3 +1,10 @@
+<h1>
+hey there {{username}}
+</h1>
+{{#each favOwnedGame as |game|}}
+{{> multiple-game-info game}}
+{{/each}}
+
 <a href="/dashboard/favorite">View favorites</a>
 <a href="/dashboard/ownership"> view owned games</a>
 <a href="/dashboard/wishlist">view Wishlist</a>
