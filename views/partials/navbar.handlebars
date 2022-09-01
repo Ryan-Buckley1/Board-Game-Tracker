@@ -1,23 +1,23 @@
-<ul class="nav d-flex justify-content-between fs-3 bg-dark border-warning">
-    {{#if loggedIn}}
+<ul class="nav fs-3 bg-dark border-warning">
   <li class="nav-item">
+    <a class="nav-link navTracker text-white fs-1" aria-current="homepage "href="/"><strong>Board Game Tracker</strong></a>
+  </li>
+     {{#if loggedIn}}
+  <li class="nav-item dashNav">
     <a href="/dashboard" class="nav-link text-white">Dashboard</a>
     {{else}}
   </li>
-  <li class="nav-item">
+  <li class="nav-item signNav">
        <a href="/signup" class="nav-link text-white fs-2">Sign Up</a>
+       {{/if}}
   </li>
-    {{/if}}
-  <li class="nav-item">
-    <a class="nav-link text-white fs-1" aria-current="homepage "href="/"><strong>Board Game Tracker</strong></a>
-  </li>
-    {{#if loggedIn}}
-  <li class="nav-item">
+  {{#if loggedIn}}
+  <li class="nav-item outNav">
     <a href ="#" id="logout" class="nav-link cursor-pointer"><i class="fa text-danger fa-sign-out fs-1" aria-hidden="true"></i>
 </a>
   </li>
   {{else}}
-  <li class="nav-item">
+  <li class="nav-item inNav">
        <a href="/login" class="nav-link"> <i class="fa text-success fa-sign-in fs-1" aria-hidden="true"></i></a>
   </li>
     {{/if}}

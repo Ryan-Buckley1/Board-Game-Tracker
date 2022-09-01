@@ -14,10 +14,21 @@ body {
   background-image: url('/images/chessBoard.jpg');
   background-position: center;
   background-size: cover;
-  overflow: hidden;
 }
-nav {
-    background-color: white;
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+.dashNav, .signNav {
+  position: absolute;
+  right: 4vw;
+  top: 1vh;
+}
+
+.outNav, .inNav {
+  position: absolute;
+  right: 0;
+  top: 1.5vh;
 }
 
 article,
@@ -499,6 +510,51 @@ legend {
   margin-top: 1.25rem;
 }
 
+.allCatBox {
+  max-height: 50vh;
+  width: 50vw;
+  overflow-y:scroll ;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding:10px;
+  background-color: rgba(32, 25, 25, 0.85);
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  justify-content: space-around;
+
+}
+
+.allCatBox li {
+  margin: 10px;
+  box-shadow: rgba(54, 56, 57, 0.42) 0px 2px 4px 0px, rgba(78, 81, 83, 0.45) 0px 2px 16px 0px;
+  max-height: 50px;
+  width: 120px;
+  margin: 0, auto;
+  padding: 5px;
+  background-color: white;
+  text-align: center;
+}
+
+.allCatBox li:hover {
+box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.921) 0px 2px 16px 0px;
+}
+
+.allCatBox li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  text-shadow: rgb(182, 178, 178) 1px 1px 1px;
+}
+.catBoxDiv h6 {
+    width: 33vw;
+    margin: 0 , auto;
+    font-weight: bolder;
+    text-shadow: -1px 1px 0 #000000,
+    3px 3px 0 #000000,
+    2px -2px 0 #000000,
+    -1px -1px 0 #000000;
+    position: relative;
+    left: 90%;
+}
 @media only screen and (max-width: 768px) {
   *{
     position: relative;
@@ -507,6 +563,23 @@ legend {
     position: absolute;
     left: 0vw;
     top: 0vh;
+    overflow: hidden !important;
+  }
+  .nav {
+    width:100vw;
+  }
+  .dashNav, .signNav{
+    top: 2.5vh;
+    right: -1.5vw;
+    font-size: medium !important;
+  }
+  .inNav, .outNav {
+    font-size: small;
+    top: -.75vh;
+    right: -1vw;
+  }
+  .signNav a{
+    font-size: medium !important;
   }
 
   .custom-form {
@@ -528,6 +601,26 @@ legend {
     width: 100%;
     left: 3vw;
   }
-
+  .catBoxDiv {
+    position: absolute;
+    left: 25vw;
+    
+  }
+  .allCatBox {
+    justify-content: center;
+    width: 75vw;
+    left: -10vw;
+  }
+  
+  
+  .catBoxDiv h6 {
+    width: 33vw;
+    margin-left: 1rem;
+    font-weight: bolder;
+    text-shadow: -1px 1px 0 #41ba45,
+    3px 3px 0 #000000,
+    2px -2px 0 #000000,
+    -1px -1px 0 #000000;
+  }
 }
-
+  
