@@ -1,9 +1,9 @@
 {{> single-game-info game}}
-
+{{#if loggedIn}}
 <button id="addToFavorite">Add to favorite</button>
 <button id="addToWishlist">Add to wishlist</button>
 <button id="addToOwned">Add to owned</button>
-
+{{/if}}
 <script src="/javascript/addFavorite.js"></script>
 <script src="/javascript/addOwnership.js"></script>
 <script src="/javascript/addWishlist.js"></script>

@@ -35,12 +35,8 @@ router.get("/signup", (req, res) => {
 
 router.get("/game", async (req, res) => {
   try {
-    const allGames = Game.findAll({
-<<<<<<< HEAD
+    const allGames = await Game.findAll({
       attributes: ["id", "name", "description", "image_url"],
-=======
-      attributes: ["id", "name", "description"],
->>>>>>> 7344f8708d7351f97304f2621089b77ec617d6e3
       include: {
         model: Category,
         attributes: ["id", "category_name"],
