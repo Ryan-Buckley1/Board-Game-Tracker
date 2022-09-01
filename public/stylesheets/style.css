@@ -555,6 +555,21 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
     position: relative;
     left: 90%;
 }
+.viewFilters {
+  background-color: rgb(52, 58, 64);
+  position: relative;
+  left: 0vw;
+  width:100%;
+}
+.viewFilters a {
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.viewFilters a:hover {
+  color: black;
+  background-color: rgba(236, 221, 221, 0.85);
+}
 @media only screen and (max-width: 768px) {
   *{
     position: relative;

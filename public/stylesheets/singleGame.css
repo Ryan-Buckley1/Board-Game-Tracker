@@ -1,3 +1,4 @@
+
 .cardList {
     position: absolute;
     left:45vw;
@@ -6,9 +7,6 @@
 .card {
     border: 1px solid white;
     text-transform: capitalize;
-}
-.card-text {
-    
 }
 h3 {
     text-decoration: underline;
@@ -27,9 +25,29 @@ h3 {
 
     color: white;
     padding: 10px;
-    border: 5px solid black;
+    border: 1px solid white;
 }
 #submitPrefs {
     position: relative;
     left: 20%;
+}
+
+@media only screen and (max-width: 768px) {
+    .cardList {
+        position: absolute;
+        left: 0;
+        top: 1vh;
+    }
+    .pref-form {
+        font-size: small;
+        width: fit-content;
+        padding: 0, 7px;
+        position: absolute;
+        left: 70.75vw;
+        height: 20vh;
+        padding-top: 1rem;
+    }
+    .pref-form input{
+        margin-bottom: 1rem;
+    }
 }

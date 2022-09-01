@@ -1,10 +1,12 @@
-<h1>
-hey there {{username}}
+<div class="viewFilters">
+<a class="btn" href="/dashboard/favorite">View Favorites</a>
+<a class="btn" href="/dashboard/ownership">View Owned Games</a>
+<a class="btn" href="/dashboard/wishlist">View Wishlist</a>
+</div>
+<h1 class="text-white fs-1">
+Hey there {{username}}! <br/>
+Here's a list of the games you own!
 </h1>
 {{#each favOwnedGame}}
 {{> multiple-game-info game}}
 {{/each}}
-
-<a href="/dashboard/favorite">View favorites</a>
-<a href="/dashboard/ownership"> view owned games</a>
-<a href="/dashboard/wishlist">view Wishlist</a>
