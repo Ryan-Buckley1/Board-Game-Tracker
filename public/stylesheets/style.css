@@ -571,6 +571,83 @@ box-shadow: rgba(156, 163, 165, 0.857) 0px 2px 4px 0px, rgba(139, 147, 150, 0.92
 .allCard {
   background-color:rgb(52, 58, 64);
 }
+.catSelector select {
+  width: 10vw;
+}
+.backToList {
+  position: absolute;
+  left: 40vw;
+  background-color:rgb(41, 42, 45);
+  padding:1rem;
+}
+#validationCustom02 {
+  height: 12vh;
+  width: 15vw;
+  resize: none;
+}
+#validationCustom01{
+  width: 15vw;
+}
+#validationCustom03{width: 15vw;}
+#validationCustom04{width: 15vw;}
+.custom-form{
+  background-color: rgba(32, 25, 25, 0.85);
+  width: fit-content;
+  padding: 2rem;
+  position: absolute;
+  left: 45vw;
+  top: 25vh;
+  color: white;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.custom-forminput, .custom-formlabel {
+  margin: 5px 10px;
+}
+
+.custom-form.btn {
+  width: 75%;
+  left: 12%;
+}
+
+.btn-primary {
+  position: relative;
+  width: fit-content;
+
+}
+
+.btn-signup {
+
+  margin-top: 1.25rem;
+  
+}
+
+#rememberMeCheck {
+  bottom: 3px;
+  width: 15px;
+}
+
+
+
+.custom-select, .custom-form input {
+  width: fit-content;
+}
+
+#validationCustom03 {
+  width: 15vw;
+}
+.modal-header, .modal-body, .modal-footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: rgb(52, 58, 64, 1);
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  color: white;
+}
+.modal-body {
+  max-height: 75vh;
+  overflow: scroll;
+}
 @media only screen and (max-width: 768px) {
   *{
     position: relative;
