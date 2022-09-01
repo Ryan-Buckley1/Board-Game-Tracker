@@ -17,9 +17,9 @@ async function userPrefHandler(event) {
   const response = await fetch(`/api/gamelist/userPref/${game_id}`, {
     method: "PUT",
     body: JSON.stringify({
-      wishlist,
-      favorite,
       ownership,
+      favorite,
+      wishlist,
     }),
     headers: {
       "Content-Type": "application/json",
