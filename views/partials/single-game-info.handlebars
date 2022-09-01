@@ -1,37 +1,32 @@
-<article class="game">
-  <div class="name">
-    <h2>{{name}}</h2>
+<link rel="stylesheet" href="\stylesheets\singleGame.css">
+<div class="container cardList">
+
+<div class="card bg-dark text-white" style="width: 18rem;">
+  <img src="{{image_url}}" class="card-img-top" alt="{{name}}">
+  <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
+    <p class="card-text">{{description}}</p>
   </div>
-  <div class="image">
-    <img src="{{image_url}}" alt="{{name}}" />
-  </div>
-  <div class="description">
-    <p>{{description}}</p>
-  </div>
-  <ul>
-    <li class="min-players">
-      Min Players:
-      {{min_players}}
-    </li>
-    <li class="max-players">
-      Max Players:
-      {{max_players}}
-    </li>
-    <li class="duration">
-      Can play game in
+  <ul class="list-group list-group-flush text-white">
+    <li class="list-group-item bg-dark text-white"> Min Players:
+      {{min_players}}</li>
+    <li class="list-group-item bg-dark text-white">Max Players:
+      {{max_players}}</li>
+    <li class="list-group-item bg-dark text-white">Can play game in
       {{duration}}
-      hours
-    </li>
-    <li class="age-rating">
+      hours</li>
+    <li class="list-group-item bg-dark text-white">
       Age Rating:
       {{age_rating}}
-      yrs old
-    </li>
-    {{#each categories}}
-      <li class="category">
-        Game Category:
-        {{category_name}}
-      </li>
-    {{/each}}
+      yrs old</li>
+
+  <div class="card-body">
+      <h3 class="catHeader">Game Categories: </h3>
+{{#each categories}}
+    <li> 
+        {{category_name}}</li>
+ {{/each}}
   </ul>
-</article>
+  </div>
+</div>
+</div>

@@ -1,0 +1,33 @@
+
+.cardList {
+    position: absolute;
+    left:45vw;
+    top: 15vh;
+}
+.card {
+    border: 1px solid white;
+    text-transform: capitalize;
+}
+h3 {
+    text-decoration: underline;
+}
+
+.card-body li {
+    list-style: none;
+}
+
+.pref-form {
+    background-color:rgb(52, 58, 64) ;
+    width: fit-content;
+    position: absolute;
+    left: 59.8vw;
+    top: 35vh;
+
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+}
+#submitPrefs {
+    position: relative;
+    left: 20%;
+}
