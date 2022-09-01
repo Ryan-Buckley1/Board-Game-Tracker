@@ -1,4 +1,3 @@
-
 //CHECKS OVER FORM TO MAKE SURE ALL REQUIRED FIELDS HAVE BEEN FILLED OUT
 
 (function () {
@@ -55,7 +54,7 @@ async function newGameHandler(event) {
     let catVal = allSelectedCategories[i].value;
     category_id.push(catVal);
   }
-//HAD TO CHANGE TO FORM DATA FOR CLOUDINARY TO WORK
+  //HAD TO CHANGE TO FORM DATA FOR CLOUDINARY TO WORK
   var formData = new FormData();
   formData.append("uploaded_file", image);
   formData.append("name", name);
@@ -70,6 +69,7 @@ async function newGameHandler(event) {
     body: formData,
   });
   if (response.ok) {
+    alert("Game successfully created!");
     document.location.replace("/");
   } else {
     alert(response.statusText);
