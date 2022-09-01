@@ -34,6 +34,9 @@ h3 {
     position: relative;
     left: 0;
 }
+.gamerCard {
+    width: 18rem;
+}
 
 @media only screen and (max-width: 768px) {
     .cardList {
@@ -54,4 +57,6 @@ h3 {
        top: 4.5vh;
         width:20vw;
     }
+    .gamerCard {width: 18rem;}
+
 }
