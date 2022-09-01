@@ -104,7 +104,9 @@ router.post("/", upload.single("uploaded_file"), async (req, res) => {
     //IF THE REQUEST HAS AN IMAGE IT WILL RUN THIS WAY
     if (req.file) {
       const uploadedImage = await cloudinary.uploader.upload(req.file.path, {
-        eager: [{ width: 300, height: 300, crop: "crop" }],
+        width: 263,
+        height: 263,
+        crop: "limit",
       });
       const newGame = await Game.create({
         name: req.body.name,
