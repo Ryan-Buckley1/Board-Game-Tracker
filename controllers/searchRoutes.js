@@ -1,6 +1,7 @@
 const { Game, User, Category, game_category_bridge } = require("../models");
 const router = require("express").Router();
 
+//ROUTE TO RENDER SINGLE GAME VIEW WHEN THE USER SEARCHES FOR A GAME BY NAME
 router.get("/game/:name", async (req, res) => {
   try {
     const oneGame = await Game.findOne({
@@ -33,6 +34,7 @@ router.get("/game/:name", async (req, res) => {
   }
 });
 
+//ROUTE TO RENDER THE SINGLE CATEGORY PAGE WHEN A USER SEARCHES A CATEGORY BY NAME
 router.get("/category/:name", async (req, res) => {
   try {
     const catGames = await Category.findOne({

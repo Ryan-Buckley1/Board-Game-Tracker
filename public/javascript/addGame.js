@@ -1,3 +1,6 @@
+
+//CHECKS OVER FORM TO MAKE SURE ALL REQUIRED FIELDS HAVE BEEN FILLED OUT
+
 (function () {
   "use strict";
   window.addEventListener(
@@ -52,7 +55,7 @@ async function newGameHandler(event) {
     let catVal = allSelectedCategories[i].value;
     category_id.push(catVal);
   }
-
+//HAD TO CHANGE TO FORM DATA FOR CLOUDINARY TO WORK
   var formData = new FormData();
   formData.append("uploaded_file", image);
   formData.append("name", name);

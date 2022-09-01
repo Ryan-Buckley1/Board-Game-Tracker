@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { game_category_bridge } = require("../../models");
 
+//CREATED FOR SEED 
 router.post("/", async (req, res) => {
   try {
     const newBridge = await game_category_bridge.create({

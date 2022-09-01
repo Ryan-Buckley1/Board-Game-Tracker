@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+//GETS ALL USERS
 router.get("/", async (req, res) => {
   try {
     const allUsers = await User.findAll({
@@ -13,6 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//GETS USER BY ID
 router.get("/:id", async (req, res) => {
   try {
     const singleUser = await User.findOne({
@@ -22,7 +24,6 @@ router.get("/:id", async (req, res) => {
       attributes: {
         exclude: ["password"],
       },
-      //ADD INCLUDES
     });
     if (!singleUser) {
       res.status(404).json({
@@ -37,19 +38,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+//ADDS A NEW USER
 router.post("/", async (req, res) => {
   try {
-    const newUser = await User.create(
-      {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        // is_admin: false,
-      }
-      // { fields: ["email", "password"] }
-    );
+    const newUser = await User.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
     req.session.userId = newUser.id;
     req.session.username = newUser.username;
     req.session.loggedIn = true;
@@ -62,6 +60,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+//LOGIN ROUTE FOR USER TO SET UP SESSION TO BE ABLE TO ACCESS PARTS THAT REQUIRE USER TO BE LOGGED IN
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -116,7 +115,7 @@ router.post("/login", (req, res) => {
 //     res.status(500).json(error);
 //   }
 // });
-
+//LOGS USER OUT AND ENDS THEIR SESSION
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {

@@ -1,6 +1,8 @@
-const adminAuth = (req, res, next) => {
-  if (req.session.isAdmin) return next();
-  alert("Not authorized");
-};
+//FUTURE DEVELOPMENT
 
-module.exports = adminAuth;
+// const adminAuth = (req, res, next) => {
+//   if (req.session.isAdmin) return next();
+//   alert("Not authorized");
+// };
+
+// module.exports = adminAuth;

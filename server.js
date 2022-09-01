@@ -25,7 +25,7 @@ cloudinary.config({
 
 const sess = {
   secret: process.env.SESSION_SECRET || "the secretest secret",
-  cookie: { expires: 600000 },
+  cookie: { expires: 6000000 },
   resave: false,
   saveUnitialized: true,
   proxy: true,

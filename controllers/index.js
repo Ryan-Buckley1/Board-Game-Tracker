@@ -6,9 +6,9 @@ const dashboardRoutes = require("./dashboardRoutes");
 const searchRoutes = require("./searchRoutes");
 
 router.use("/dashboard", dashboardRoutes);
-router.use("/api", apiRoutes);
 router.use("/create", createRoutes);
 router.use("/search", searchRoutes);
+router.use("/api", apiRoutes);
 router.use("/", homeRoutes);
 
 router.use((req, res) => {

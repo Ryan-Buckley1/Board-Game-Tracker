@@ -1,3 +1,5 @@
+//FUNCTION MAKES A FETCH REQUEST TO DB TO LOG IN USER
+
 async function loginFormHandler(event) {
   event.preventDefault();
   const email = document.querySelector("#email-login").value.trim();
