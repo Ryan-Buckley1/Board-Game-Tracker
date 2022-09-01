@@ -27,7 +27,7 @@ router.get("/game/:name", async (req, res) => {
     });
     const game = oneGame.get({ plain: true });
     console.log(game);
-    res.render("single-game-view", { game });
+    res.render("single-game-view", { game, loggedIn: req.session.loggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
@@ -50,7 +50,7 @@ router.get("/category/:name", async (req, res) => {
     });
     const category = catGames.get({ plain: true });
     console.log(category);
-    res.render("single-category", { category });
+    res.render("single-category", { category, loggedIn: req.session.loggedIn });
   } catch (error) {
     console.error(error);
     res.status(500).json(error);
