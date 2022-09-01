@@ -1,10 +1,11 @@
+<link rel="stylesheet" href="/stylesheets/singleGame.css">
 {{> single-game-info game}}
 {{#if loggedIn}}
 <form class="pref-form">
-<input type="checkbox" name="favorite" id="addToFavorite" >Add to Favorite
-<input type="checkbox" name="ownership" id="addToOwnership" >Add to Owned
-<input type="checkbox" name="wishlist" id="addToWishlist" > Add to Wishlist
-<button type="submit" class="btn btn-success my-1 text-white" id="submitPrefs">Submit</button>
+<input type="checkbox" name="favorite" id="addToFavorite" >Add to Favorite </input><br/>
+<input type="checkbox" name="ownership" id="addToOwnership" >Add to Owned </input><br/>
+<input type="checkbox" name="wishlist" id="addToWishlist" > Add to Wishlist </input><br/>
+<button type="submit" class="btn btn-primary" id="submitPrefs">Submit</button>
 
 </form>
 {{/if}}
