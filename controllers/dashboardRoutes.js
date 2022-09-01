@@ -3,7 +3,6 @@ const sequelize = require("sequelize");
 const { GameList, Game, User, game_category_bridge } = require("../models");
 const userAuth = require("../utils/userAuth");
 
-
 //RENDERS DASHBOARD WITH THE USERS FAVORITE OWNED GAMES
 router.get("/", userAuth, async (req, res) => {
   try {
@@ -11,7 +10,7 @@ router.get("/", userAuth, async (req, res) => {
       where: {
         user_id: req.session.userId,
         favorite: true,
-        ownership: true
+        ownership: true,
       },
       attributes: ["id", "user_id", "game_id", "favorite"],
       include: [
@@ -22,7 +21,11 @@ router.get("/", userAuth, async (req, res) => {
       ],
     });
     const favOwnedGame = favOwnedGames.map((game) => game.get({ plain: true }));
-    res.render("dashboard", { favOwnedGame, loggedIn: req.session.loggedIn, username: req.session.username });
+    res.render("dashboard", {
+      favOwnedGame,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+    });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -40,7 +43,7 @@ router.get("/favorite", userAuth, async (req, res) => {
       include: [
         {
           model: Game,
-          attributes: ["id", "name", "description"],
+          attributes: ["id", "name", "description", "image_url"],
         },
       ],
     });
@@ -72,7 +75,7 @@ router.get("/wishlist", userAuth, async (req, res) => {
         {
           model: Game,
           // foreignKey: "gamelist_id",
-          attributes: ["id", "name", "description"],
+          attributes: ["id", "name", "description", "image_url"],
         },
       ],
     });
@@ -102,7 +105,7 @@ router.get("/ownership", userAuth, async (req, res) => {
       include: [
         {
           model: Game,
-          attributes: ["id", "name", "description"],
+          attributes: ["id", "name", "description", "image_url"],
         },
       ],
     });
