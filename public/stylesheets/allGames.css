@@ -1,12 +1,11 @@
 body {
     background: rgb(41, 42, 45);
   }
-  .container-fluid {
+
+  img {
+    width:500px !important;
+    height: 420px !important;
   }
-.banner {
-    background: #a770ef;
-    background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
-    background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
-  }
-  .game-card {
+  .card-bottom {
+    min-height: 25vh;
   }
