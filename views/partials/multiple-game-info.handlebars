@@ -1,13 +1,19 @@
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{{image_url}}" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><a href="/game/{{id}}">{{name}}</a></h5>
-        <p class="card-text">{{description}}</p>
+<link rel="stylesheet" href="/stylesheets/allGames.css">
+<div class="px-lg-5">
+
+<div class="container-fluid ">
+    <div class="row">
+      <div class="col-sm-3 mb-4 bg-white game-card">
+        <a class="bg-white rounded shadow-sm"><a href="/game/{{id}}"><img src="{{image_url}}" alt="{{name}}" class="img-fluid card-img-top"></a>
+          <div class="p-4">
+            <h5> <a href="/game/{{id}}" class="text-dark">{{name}}</a></h5>
+            <p class="small text-muted mb-0">{{description}}</p>
+            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+              <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
+            </div>
+          </div>
+        </div>
+</div>
       </div>
-    </div>
-  </div>
+      </div>
 </div>

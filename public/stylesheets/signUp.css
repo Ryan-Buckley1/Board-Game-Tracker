@@ -1,6 +1,16 @@
 body {
     position: relative;
 }
+#validationCustom02 {
+    height: 12vh;
+    width: 15vw;
+    resize: none;
+}
+#validationCustom01{
+    width: 15vw;
+}
+#validationCustom03{width: 15vw;}
+#validationCustom04{width: 15vw;}
 .custom-form{
     background-color: rgba(32, 25, 25, 0.85);
     width: fit-content;
@@ -35,11 +45,16 @@ body {
 
 #rememberMeCheck {
     bottom: 3px;
+    width: 15px;
 }
 
 
 
 .custom-select, .custom-form input {
+    width: fit-content;
+}
+
+#validationCustom03 {
     width: 15vw;
 }
 .modal-header, .modal-body, .modal-footer {
@@ -54,8 +69,3 @@ body {
     max-height: 75vh;
     overflow: scroll;
   }
-.gameDesc textarea {
-    height: 12vh;
-    width: 15vw;
-    resize: none;
-}
