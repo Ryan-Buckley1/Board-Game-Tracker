@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/stylesheets/signup.css" />
-
 <form class="custom-form needs-validation new-game-form">
   <h2>Create New Game</h2>
   <div>
@@ -27,40 +25,40 @@
   <div class="form-group">
     <div>
 
-        <label for="validationCustom03">Minimum number of players:</label><br/>
-        <input
-          type="number"
-          name="game-min-player"
-          id="validationCustom03"
-          class="form-controller"
-          min="1"
-          max="9"
-          required
-        />
-        <div class="invalid-feedback">Please enter a number 1 - 9</div>
-      </div>
-      <div>
-        <label for="validationCustom04">Maximum number of players:</label><br/>
-        <input
-          type="number"
-          name="game-max-player"
-          id="validationCustom04"
-          class="form-controller"
-          min="1"
-          required
-        />
-        <div class="invalid-feedback">Please enter a number greater than 1</div>
-      </div>
+      <label for="validationCustom03">Minimum number of players:</label><br />
+      <input
+        type="number"
+        name="game-min-player"
+        id="validationCustom03"
+        class="form-controller"
+        min="1"
+        max="9"
+        required
+      />
+      <div class="invalid-feedback">Please enter a number 1 - 9</div>
     </div>
-    <div class="form-group">
-      <button
-        type="button"
-        class="btn btn-light catBtn"
-        data-toggle="modal"
-        data-target="#exampleModal"
-      >
-        Categories
-      </button>
+    <div>
+      <label for="validationCustom04">Maximum number of players:</label><br />
+      <input
+        type="number"
+        name="game-max-player"
+        id="validationCustom04"
+        class="form-controller"
+        min="1"
+        required
+      />
+      <div class="invalid-feedback">Please enter a number greater than 1</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button
+      type="button"
+      class="btn btn-light catBtn"
+      data-toggle="modal"
+      data-target="#exampleModal"
+    >
+      Categories
+    </button>
 
     <div
       class="modal fade text-black"
