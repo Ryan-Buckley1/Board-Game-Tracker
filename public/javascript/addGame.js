@@ -1,3 +1,5 @@
+//CHECKS OVER FORM TO MAKE SURE ALL REQUIRED FIELDS HAVE BEEN FILLED OUT
+
 (function () {
   "use strict";
   window.addEventListener(
@@ -46,13 +48,13 @@ async function newGameHandler(event) {
   const allSelectedCategories = document.querySelectorAll(
     "input[type=checkbox]:checked"
   );
-  const image = document.getElementById("image_file").files[0];
+  const image = document.getElementById("image_file").files[0] || null;
   let category_id = [];
   for (let i = 0; i < allSelectedCategories.length; i++) {
     let catVal = allSelectedCategories[i].value;
     category_id.push(catVal);
   }
-
+  //HAD TO CHANGE TO FORM DATA FOR CLOUDINARY TO WORK
   var formData = new FormData();
   formData.append("uploaded_file", image);
   formData.append("name", name);
@@ -67,6 +69,7 @@ async function newGameHandler(event) {
     body: formData,
   });
   if (response.ok) {
+    alert("Game successfully created!");
     document.location.replace("/");
   } else {
     alert(response.statusText);

@@ -3,15 +3,35 @@ const sequelize = require("sequelize");
 const { GameList, Game, User, game_category_bridge } = require("../models");
 const userAuth = require("../utils/userAuth");
 
+//RENDERS DASHBOARD WITH THE USERS FAVORITE OWNED GAMES
 router.get("/", userAuth, async (req, res) => {
   try {
-    res.render("dashboard", { loggedIn: req.session.loggedIn });
+    const favOwnedGames = await GameList.findAll({
+      where: {
+        user_id: req.session.userId,
+        favorite: true,
+        ownership: true,
+      },
+      attributes: ["id", "user_id", "game_id", "favorite"],
+      include: [
+        {
+          model: Game,
+          attributes: ["id", "name", "description", "image_url"],
+        },
+      ],
+    });
+    const favOwnedGame = favOwnedGames.map((game) => game.get({ plain: true }));
+    res.render("dashboard", {
+      favOwnedGame,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+    });
   } catch (error) {
     res.status(500).json(error);
   }
 });
 
-//TODO: MAKE THE SEQUELIZE LITERAL WORK!
+//RENDERS FAVORITE PAGE WITH USERS FAVORITE GAMES
 router.get("/favorite", userAuth, async (req, res) => {
   try {
     const favGames = await GameList.findAll({
@@ -23,7 +43,7 @@ router.get("/favorite", userAuth, async (req, res) => {
       include: [
         {
           model: Game,
-          attributes: ["id", "name", "description"],
+          attributes: ["id", "name", "description", "image_url"],
         },
       ],
     });
@@ -40,6 +60,7 @@ router.get("/favorite", userAuth, async (req, res) => {
   }
 });
 
+//RENDERS WISHLIST PAGE WITH USERS WISHLIST OF GAMES
 router.get("/wishlist", userAuth, async (req, res) => {
   try {
     console.log(req.session.userId);
@@ -54,11 +75,11 @@ router.get("/wishlist", userAuth, async (req, res) => {
         {
           model: Game,
           // foreignKey: "gamelist_id",
-          attributes: ["id", "name", "description"],
+          attributes: ["id", "name", "description", "image_url"],
         },
       ],
     });
-    // console.log(wishGames);
+    console.log(wishGames);
     const wishGame = wishGames.map((game) => game.get({ plain: true }));
     console.log(wishGame);
     res.render("wishlist", {
@@ -72,6 +93,7 @@ router.get("/wishlist", userAuth, async (req, res) => {
   }
 });
 
+//RENDERS OWNERSHIP PAGE WITH A LIST OF GAMES OWNED BY USER
 router.get("/ownership", userAuth, async (req, res) => {
   try {
     const ownedGames = await GameList.findAll({
@@ -83,7 +105,7 @@ router.get("/ownership", userAuth, async (req, res) => {
       include: [
         {
           model: Game,
-          attributes: ["id", "name", "description"],
+          attributes: ["id", "name", "description", "image_url"],
         },
       ],
     });

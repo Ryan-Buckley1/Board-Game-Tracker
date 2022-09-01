@@ -3,7 +3,7 @@ const { Category } = require("../models");
 const router = require("express").Router();
 const userAuth = require("../utils/userAuth");
 
-
+//POPULATES CATEGORY LIST IN ADD NEW GAME PAGE
 router.get("/game", userAuth, async (req, res) => {
   try {
     const allCategories = await Category.findAll({

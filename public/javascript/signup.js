@@ -1,3 +1,5 @@
+//FUNCTION TAKES ALL USER INPUT DATA AND SENDS TO DB TO  CREATE A NEW USER
+
 async function signupFormHandler(event) {
   event.preventDefault();
   const email = document.querySelector("#email-signup").value.trim();
@@ -26,5 +28,5 @@ async function signupFormHandler(event) {
 }
 
 document
-  .querySelector(".signup-form")
-  .addEventListener("submit", signupFormHandler);
+  .querySelector("#signup-button")
+  .addEventListener("click", signupFormHandler);
