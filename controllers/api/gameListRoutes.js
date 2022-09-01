@@ -95,7 +95,7 @@ router.put("/userPref/:game_id", async (req, res) => {
         game_id: req.params.game_id,
         ownership: req.body.ownership,
         favorite: req.body.favorite,
-        wishlist: req.body.ownership,
+        wishlist: req.body.wishlist,
       });
       return res.json(newPref);
     }
